@@ -183,9 +183,10 @@ Table of Contents
 5.2.  Informative References
 
    [howmanydays]
-              "How Many Days Has It Been Since a JWT alg:none
-              Vulnerability?", n.d., <https://github.com/zofrex/howmanyd
-              ayssinceajwtalgnonevuln/blob/deploy/data/vulns.yml>.
+              Sanderson, J., "How Many Days Has It Been Since a JWT
+              alg:none Vulnerability?", n.d., <https://github.com/zofrex
+              /howmanydayssinceajwtalgnonevuln/blob/deploy/data/
+              vulns.yml>.
 
    [I-D.kario-rsa-guidance]
               Kario, H., "Implementation Guidance for the PKCS #1 RSA
@@ -195,8 +196,8 @@ Table of Contents
               guidance-02>.
 
    [NIST.SP800-131r2]
-              "Transitioning the Use of Cryptographic Algorithms and Key
-              Lengths", n.d.,
+              Barker, E. and A. Roginsky, "Transitioning the Use of
+              Cryptographic Algorithms and Key Lengths", n.d.,
               <https://csrc.nist.gov/pubs/sp/800/131/a/r2/final>.
 
    [RFC8017]  Moriarty, K., Ed., Kaliski, B., Jonsson, J., and A. Rusch,

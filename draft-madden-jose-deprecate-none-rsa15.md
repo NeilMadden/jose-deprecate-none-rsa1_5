@@ -8,17 +8,17 @@ number:
 date:
 consensus: true
 v: 3
-area: Security
-workgroup: JOSE Working Group
+area: "Security"
+workgroup: "Javascript Object Signing and Encryption"
 keyword:
  - Internet-Draft
 venue:
-  group: JOSE
-  type: Working Group
-  mail: jose@ietf.org
-  arch: https://example.com/WG
-  github: NeilMadden/jose-deprecate-none-rsa1_5
-  latest: https://example.com/LATEST
+  group: "Javascript Object Signing and Encryption"
+  type: "Working Group"
+  mail: "jose@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/jose/"
+  github: "NeilMadden/jose-deprecate-none-rsa1_5"
+  latest: "https://NeilMadden.github.io/jose-deprecate-none-rsa1_5/draft-madden-jose-deprecate-none-rsa15.html"
 
 author:
  -

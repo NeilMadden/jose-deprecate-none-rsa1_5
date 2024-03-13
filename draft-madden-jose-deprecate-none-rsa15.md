@@ -33,7 +33,8 @@ normative:
 
 informative:
   howmanydays:
-   author: James 'zofrex' Sanderson
+   author: 
+     name: James Sanderson
    title: "How Many Days Has It Been Since a JWT alg:none Vulnerability?"
    target: https://github.com/zofrex/howmanydayssinceajwtalgnonevuln/blob/deploy/data/vulns.yml
   RFC8017:

@@ -2,7 +2,7 @@
 title: "JOSE: Deprecate 'none' and 'RSA1_5'"
 category: info
 
-docname: draft-madden-jose-deprecate-none-rsa15
+docname: draft-madden-jose-deprecate-none-rsa15-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:

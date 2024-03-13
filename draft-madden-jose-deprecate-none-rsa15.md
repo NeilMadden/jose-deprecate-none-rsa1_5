@@ -81,7 +81,7 @@ padding mode has long been known to have security issues, since at least Bleiche
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP {{RFC8017}} or elliptic curve encryption
 algorithms are now widely available. NIST has disallowed the use of this encryption mode for federal
-use since the end of 2023 {{NIST.SP800-131r2}} and a CFRG draft {{ID.kario-rsa-guidance}} also deprecates
+use since the end of 2023 {{NIST.SP800-131r2}} and a CFRG draft {{I-D.kario-rsa-guidance}} also deprecates
 this encryption mode for IETF protocols. This document therefore also deprecates this algorithm for
 JWE.
 

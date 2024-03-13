@@ -34,22 +34,22 @@ normative:
 informative:
   howmanydays:
    author:
-     name: James Sanderson
+     fullname: James Sanderson
+   date: 2023-09-25
    title: "How Many Days Has It Been Since a JWT alg:none Vulnerability?"
    target: https://github.com/zofrex/howmanydayssinceajwtalgnonevuln/blob/deploy/data/vulns.yml
   RFC8017:
   I-D.kario-rsa-guidance:
   NIST.SP800-131r2:
+   date: 2019-03-21
    author:
     -
-      name: Elaine Barker
-      org: NIST
+      fullname: Elaine Barker
+      organization: NIST
     -
-      name: Allen Roginsky
-      org: NIST
-   title: "Transitioning the Use of Cryptographic Algorithms and Key Lengths"
-   seriesInfo:
-     name: "NIST SP 800-131A Rev. 2"
+      fullname: Allen Roginsky
+      organization: NIST
+   title: "NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms and Key Lengths"
    target: https://csrc.nist.gov/pubs/sp/800/131/a/r2/final
 
 --- abstract

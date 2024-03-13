@@ -19,35 +19,32 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "JOSE: Deprecate 'none' and 'RSA1_5'"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-madden-jose-deprecate-none-rsa1_5
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: Security
+workgroup: JOSE Working Group
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - Internet-Draft
 venue:
-  group: WG
+  group: JOSE
   type: Working Group
-  mail: WG@example.com
+  mail: jose@ietf.org
   arch: https://example.com/WG
-  github: USER/REPO
+  github: NeilMadden/jose-deprecate-none-rsa1_5
   latest: https://example.com/LATEST
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: Neil Madden
+    organization: Illuminated Security Ltd
+    email: neil@illuminated-security.com
 
 normative:
 

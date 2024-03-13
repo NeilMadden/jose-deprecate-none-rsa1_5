@@ -45,7 +45,7 @@ informative:
 --- abstract
 
 This draft updates {{RFC7518}} to deprecate the JWS algorithm "none" and the JWE algorithm
-"RSA1_5". 
+"RSA1_5".
 
 --- middle
 

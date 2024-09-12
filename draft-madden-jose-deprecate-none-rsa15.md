@@ -164,5 +164,6 @@ registry {{IANA.JOSE.Algorithms}} in Section 7.1 of {{RFC7518}} are updated to a
    security goal of authenticated encryption with associated data (AEAD) should be considered for approval.
 
 --- back
+
 # Acknowledgments
 {:numbered="false"}

@@ -51,11 +51,26 @@ informative:
       organization: NIST
    title: "NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms and Key Lengths"
    target: https://csrc.nist.gov/pubs/sp/800/131/a/r2/final
+  CVE:
+    title: Common Vulnerability Enumeration Database
+    author:
+      organization: MITRE
+    target: https://cve.mitre.org
+  CVSS:
+    title: Common Vulnerability Scoring System
+    author:
+      organization: FIRST
+    target: https://www.first.org/cvss/
+  IANA.JOSE.Algorithms:
+    title: JOSE Algorithms
+    target: https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms
+    author:
+      organization: IANA
 
 --- abstract
 
 This draft updates {{RFC7518}} to deprecate the JWS algorithm "none" and the JWE algorithm
-"RSA1_5".
+"RSA1_5". These algorithms have known security weaknesses.
 
 --- middle
 
@@ -77,10 +92,26 @@ many implementations have had serious bugs due to accepting this algorithm. In s
 led to a complete loss of security as authenticity and integrity checking can be disabled by an
 adversary simply by changing the algorithm ("alg") header in the JWS. The website {{howmanydays}}
 tracks public vulnerabilities due to implementations mistakenly accepting the "none" algorithm. It
-currently lists 12 reports, many of which have high impact ratings.
+currently lists 12 reports, many of which have high impact ratings. The following is a partial list
+of issues known to have been caused by misuse of the "none" algorithm, with a Common Vulnerability
+Enumeration {{CVE}} identifier, and a Common Vulnerability Scoring System {{CVSS}} score
+indicating the severity of the impact:
+
+ - [CVE-2018-1000531](https://nvd.nist.gov/vuln/detail/CVE-2018-1000531) - CVSS: 7.5 (High)
+ - [CVE-2017-10862](https://nvd.nist.gov/vuln/detail/CVE-2017-10862) - CVSS: 5.3 (Medium)
+ - [CVE-2022-23540](https://nvd.nist.gov/vuln/detail/CVE-2022-23540) - CVSS: 7.6 (High)
+ - [CVE-2020-15957](https://nvd.nist.gov/vuln/detail/CVE-2020-15957) - CVSS: 7.5 (High)
+ - [CVE-2021-29500](https://nvd.nist.gov/vuln/detail/CVE-2021-29500) - CVSS: 7.5 (High)
+ - [CVE-2021-29451](https://nvd.nist.gov/vuln/detail/CVE-2021-29451) - CVSS: 9.1 (Critical)
+ - [CVE-2021-29455](https://nvd.nist.gov/vuln/detail/CVE-2021-29455) - CVSS: 7.5 (High)
+ - [CVE-2021-22160](https://nvd.nist.gov/vuln/detail/CVE-2021-22160) - CVSS: 9.8 (Critical)
+ - [CVE-2021-32631](https://nvd.nist.gov/vuln/detail/CVE-2021-32631) - CVSS: 6.5 (Medium)
+ - [CVE-2023-29357](https://nvd.nist.gov/vuln/detail/CVE-2023-29357) - CVSS: 9.8 (Critical)
+
+Many other vulnerabilities have been reported without an accompanying CVE, which we do not list here.
 
 Although there are some legitimate use-cases for Unsecured JWS, these are relatively few in number
-and can easily be satisfied by simply base64url-encoding some JSON instead. The small risk of breaking
+and can easily be satisfied by alternative means. The small risk of breaking
 some of these use-cases is far outweighed by the improvement in security for the majority of
 JWS users who may be impacted by accidental acceptance of the "none" algorithm.
 
@@ -112,12 +143,26 @@ No security issues are introduced by this specification.
 
 # IANA Considerations
 
+## JOSE Algorithm Deprecations
+
 The following changes are to be made to the IANA JOSE Web Signature and Encryption Algorithms registry:
 
  - For the entry with Algorithm Name "none", update the JOSE Implementation Requirements to "Deprecated".
  - For the entry with Algorithm Name "RSA1_5", update the JOSE Implementation Requirements to "Deprecated".
 
---- back
+## Updated Review Instructions for Designated Experts
 
+The review instructions for the designated experts for the IANA "JSON Web Signature and Encryption Algorithms"
+registry {{IANA.JOSE.Algorithms}} in Section 7.1 of {{RFC7518}} are updated to add this additional review criteria:
+
+ - For JWS signature algorithms, only algorithms that meet the standard security goal of existential unforgeability
+   under a chosen message attack (EUF-CMA) should be considered for approval.
+ - For JWE key management algorithms (specified with the "alg" header), only algorithms that meet the standard
+   security goal of indistinguishability under an adaptive chosen ciphertext attack (IND-CCA2) should be considered
+   for approval.
+ - For JWE content encryption methods (specified with the "enc" header), only algorithms that meet the standard
+   security goal of authenticated encryption with associated data (AEAD) should be considered for approval.
+
+--- back
 # Acknowledgments
 {:numbered="false"}

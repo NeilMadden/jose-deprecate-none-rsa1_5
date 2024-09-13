@@ -4,9 +4,9 @@
 
 Javascript Object Signing and Encryption                       N. Madden
 Internet-Draft                                  Illuminated Security Ltd
-Updates: 7518 (if approved)                            12 September 2024
+Updates: 7518 (if approved)                            13 September 2024
 Intended status: Standards Track                                        
-Expires: 16 March 2025
+Expires: 17 March 2025
 
 
                   JOSE: Deprecate 'none' and 'RSA1_5'
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 March 2025.
+   This Internet-Draft will expire on 17 March 2025.
 
 Copyright Notice
 
@@ -167,9 +167,9 @@ Table of Contents
    such as OAEP [RFC8017] or elliptic curve encryption algorithms are
    now widely available.  NIST has disallowed the use of this encryption
    mode for federal use since the end of 2023 [NIST.SP800-131r2] and a
-   CFRG draft [I-D.kario-rsa-guidance] also deprecates this encryption
-   mode for IETF protocols.  This document therefore also deprecates
-   this algorithm for JWE.
+   CFRG draft [I-D.irtf-cfrg-rsa-guidance] also deprecates this
+   encryption mode for IETF protocols.  This document therefore also
+   deprecates this algorithm for JWE.
 
 1.3.  Guidance on deprecation
 
@@ -210,21 +210,23 @@ Table of Contents
    The review instructions for the designated experts for the IANA "JSON
    Web Signature and Encryption Algorithms" registry
    [IANA.JOSE.Algorithms] in Section 7.1 of [RFC7518] are updated to add
-   this additional review criteria:
+   these additional review criteria:
 
-   *  For JWS signature algorithms, only algorithms that meet the
-      standard security goal of existential unforgeability under a
-      chosen message attack (EUF-CMA) should be considered for approval.
+   *  For JWS signature algorithms, only algorithms that are reasonably
+      conjectured to meet the standard security goal of existential
+      unforgeability under a chosen message attack (EUF-CMA) should be
+      considered for approval.
 
    *  For JWE key management algorithms (specified with the "alg"
-      header), only algorithms that meet the standard security goal of
-      indistinguishability under an adaptive chosen ciphertext attack
-      (IND-CCA2) should be considered for approval.
+      header), only algorithms that are reasonably conjectured to meet
+      the standard security goal of indistinguishability under an
+      adaptive chosen ciphertext attack (IND-CCA2) should be considered
+      for approval.
 
    *  For JWE content encryption methods (specified with the "enc"
-      header), only algorithms that meet the standard security goal of
-      authenticated encryption with associated data (AEAD) should be
-      considered for approval.
+      header), only algorithms that are reasonably conjectured to meet
+      the standard security goal of authenticated encryption with
+      associated data (AEAD) should be considered for approval.
 
 5.  References
 
@@ -257,12 +259,12 @@ Table of Contents
               ub.com/zofrex/howmanydayssinceajwtalgnonevuln/blob/deploy/
               data/vulns.yml>.
 
-   [I-D.kario-rsa-guidance]
+   [I-D.irtf-cfrg-rsa-guidance]
               Kario, A., "Implementation Guidance for the PKCS #1 RSA
               Cryptography Specification", Work in Progress, Internet-
-              Draft, draft-kario-rsa-guidance-02, 22 November 2023,
-              <https://datatracker.ietf.org/doc/html/draft-kario-rsa-
-              guidance-02>.
+              Draft, draft-irtf-cfrg-rsa-guidance-01, 3 September 2024,
+              <https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-
+              rsa-guidance-01>.
 
    [IANA.JOSE.Algorithms]
               IANA, "JOSE Algorithms", n.d.,

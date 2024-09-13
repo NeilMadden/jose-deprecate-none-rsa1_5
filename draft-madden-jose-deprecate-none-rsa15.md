@@ -39,7 +39,7 @@ informative:
    title: "How Many Days Has It Been Since a JWT alg:none Vulnerability?"
    target: https://github.com/zofrex/howmanydayssinceajwtalgnonevuln/blob/deploy/data/vulns.yml
   RFC8017:
-  I-D.kario-rsa-guidance:
+  I-D.irtf-cfrg-rsa-guidance:
   NIST.SP800-131r2:
    date: 2019-03-21
    author:
@@ -122,7 +122,7 @@ padding mode has long been known to have security issues, since at least Bleiche
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP {{RFC8017}} or elliptic curve encryption
 algorithms are now widely available. NIST has disallowed the use of this encryption mode for federal
-use since the end of 2023 {{NIST.SP800-131r2}} and a CFRG draft {{I-D.kario-rsa-guidance}} also deprecates
+use since the end of 2023 {{NIST.SP800-131r2}} and a CFRG draft {{I-D.irtf-cfrg-rsa-guidance}} also deprecates
 this encryption mode for IETF protocols. This document therefore also deprecates this algorithm for
 JWE.
 
@@ -153,15 +153,16 @@ The following changes are to be made to the IANA JOSE Web Signature and Encrypti
 ## Updated Review Instructions for Designated Experts
 
 The review instructions for the designated experts for the IANA "JSON Web Signature and Encryption Algorithms"
-registry {{IANA.JOSE.Algorithms}} in Section 7.1 of {{RFC7518}} are updated to add this additional review criteria:
+registry {{IANA.JOSE.Algorithms}} in Section 7.1 of {{RFC7518}} are updated to add these additional review criteria:
 
- - For JWS signature algorithms, only algorithms that meet the standard security goal of existential unforgeability
-   under a chosen message attack (EUF-CMA) should be considered for approval.
- - For JWE key management algorithms (specified with the "alg" header), only algorithms that meet the standard
-   security goal of indistinguishability under an adaptive chosen ciphertext attack (IND-CCA2) should be considered
-   for approval.
- - For JWE content encryption methods (specified with the "enc" header), only algorithms that meet the standard
-   security goal of authenticated encryption with associated data (AEAD) should be considered for approval.
+ - For JWS signature algorithms, only algorithms that are reasonably conjectured to meet the standard security goal
+   of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval.
+ - For JWE key management algorithms (specified with the "alg" header), only algorithms that are reasonably
+   conjectured to meet the standard security goal of indistinguishability under an adaptive chosen ciphertext
+   attack (IND-CCA2) should be considered for approval.
+ - For JWE content encryption methods (specified with the "enc" header), only algorithms that are reasonably
+   conjectured to meet the standard security goal of authenticated encryption with associated data (AEAD) should
+   be considered for approval.
 
 --- back
 

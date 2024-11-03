@@ -3,7 +3,7 @@ title: "JOSE: Deprecate 'none' and 'RSA1_5'"
 category: std
 ipr: trust200902
 
-docname: draft-madden-jose-deprecate-none-rsa15-latest
+docname: draft-ietf-jose-deprecate-none-rsa15-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 updates: 7518
 number:
@@ -20,7 +20,7 @@ venue:
   mail: "jose@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/jose/"
   github: "NeilMadden/jose-deprecate-none-rsa1_5"
-  latest: "https://NeilMadden.github.io/jose-deprecate-none-rsa1_5/draft-madden-jose-deprecate-none-rsa15.html"
+  latest: "https://NeilMadden.github.io/jose-deprecate-none-rsa1_5/draft-ietf-jose-deprecate-none-rsa15.html"
 
 author:
  -
@@ -40,17 +40,7 @@ informative:
    target: https://github.com/zofrex/howmanydayssinceajwtalgnonevuln/blob/deploy/data/vulns.yml
   RFC8017:
   I-D.irtf-cfrg-rsa-guidance:
-  NIST.SP800-131r2:
-   date: 2019-03-21
-   author:
-    -
-      fullname: Elaine Barker
-      organization: NIST
-    -
-      fullname: Allen Roginsky
-      organization: NIST
-   title: "NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms and Key Lengths"
-   target: https://csrc.nist.gov/pubs/sp/800/131/a/r2/final
+  NIST.SP800-131Ar2: DOI.10.6028/NIST.SP.800-131Ar2
   CVE:
     title: Common Vulnerability Enumeration Database
     author:
@@ -61,11 +51,7 @@ informative:
     author:
       organization: FIRST
     target: https://www.first.org/cvss/
-  IANA.JOSE.Algorithms:
-    title: JOSE Algorithms
-    target: https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms
-    author:
-      organization: IANA
+  IANA.jose:
 
 --- abstract
 
@@ -83,6 +69,9 @@ correctly leading to exploitable vulnerabilities. This draft deprecates two such
 
  - The JWS "none" algorithm, which indicates that no security is applied to the message at all.
  - The JWE "RSA1_5" algorithm, which indicates RSA encryption with PKCS#1 version 1.5 padding.
+
+Note that RSA signatures using PKCS#1 version 1.5 padding (`RS256`, `RS384`, and `RS512`) are
+unchanged by this specification and can still be used.
 
 ## The 'none' algorithm
 
@@ -122,7 +111,7 @@ padding mode has long been known to have security issues, since at least Bleiche
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP {{RFC8017}} or elliptic curve encryption
 algorithms are now widely available. NIST has disallowed the use of this encryption mode for federal
-use since the end of 2023 {{NIST.SP800-131r2}} and a CFRG draft {{I-D.irtf-cfrg-rsa-guidance}} also deprecates
+use since the end of 2023 {{NIST.SP800-131Ar2}} and a CFRG draft {{I-D.irtf-cfrg-rsa-guidance}} also deprecates
 this encryption mode for IETF protocols. This document therefore also deprecates this algorithm for
 JWE.
 
@@ -132,6 +121,11 @@ Both of the algorithms listed above are deprecated for use in JWS and JWE. JOSE 
 SHOULD deprecate support for these algorithms and commit to a timeline for removal. Application
 developers SHOULD disable support for these algorithms by default. New specifications building on
 top of JOSE MUST NOT allow the use of either algorithm.
+
+The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are
+"Prohibited". The algorithms identified in this document are to be marked as Deprecated only. Existing
+specifications and applictions that make use of these algorithms can continue to do so, but should
+consider adopting alternatives in future updates.
 
 # Conventions and Definitions
 
@@ -153,7 +147,7 @@ The following changes are to be made to the IANA JOSE Web Signature and Encrypti
 ## Updated Review Instructions for Designated Experts
 
 The review instructions for the designated experts for the IANA "JSON Web Signature and Encryption Algorithms"
-registry {{IANA.JOSE.Algorithms}} in Section 7.1 of {{RFC7518}} are updated to add these additional review criteria:
+registry {{IANA.jose}} in Section 7.1 of {{RFC7518}} are updated to add these additional review criteria:
 
  - For JWS signature algorithms, only algorithms that are reasonably conjectured to meet the standard security goal
    of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval.

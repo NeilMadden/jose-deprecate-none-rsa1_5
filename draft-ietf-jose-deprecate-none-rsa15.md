@@ -55,8 +55,10 @@ informative:
 
 --- abstract
 
-This draft updates {{RFC7518}} to deprecate the JWS algorithm "none" and the JWE algorithm
-"RSA1_5". These algorithms have known security weaknesses.
+This document updates {{RFC7518}} to deprecate the JWS algorithm "none" and the JWE algorithm
+"RSA1_5". These algorithms have known security weaknesses. It also updates the Review
+Instructions for Designated Experts to establish baseline security requirements that future
+algorithm registrations should meet.
 
 --- middle
 
@@ -65,13 +67,17 @@ This draft updates {{RFC7518}} to deprecate the JWS algorithm "none" and the JWE
 JSON Web Algorithms (JWA, {{RFC7518}}) introduced several standard algorithms for both JSON Web
 Signature (JWS) and JSON Web Encryption (JWE). Many of these algorithms have stood the test of time
 and are still in widespread use. However, some algorithms have proved to be difficult to implement
-correctly leading to exploitable vulnerabilities. This draft deprecates two such algorithms:
+correctly leading to exploitable vulnerabilities. This document deprecates two such algorithms:
 
  - The JWS "none" algorithm, which indicates that no security is applied to the message at all.
  - The JWE "RSA1_5" algorithm, which indicates RSA encryption with PKCS#1 version 1.5 padding.
 
 Note that RSA signatures using PKCS#1 version 1.5 padding (`RS256`, `RS384`, and `RS512`) are
 unchanged by this specification and can still be used.
+
+Additionally, this document also updates the Review Instructions for the JOSE Designated Experts,
+to establish baseline security requirements for future JOSE algorithm registrations. Only algorithms
+that are reasonably believed to satisfy these requirements should be registered in future.
 
 ## The 'none' algorithm
 

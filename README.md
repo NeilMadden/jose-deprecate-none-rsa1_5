@@ -1,11 +1,11 @@
 # JOSE: Deprecate 'none' and 'RSA1_5'
 
-This is the working area for the individual Internet-Draft, "JOSE: Deprecate 'none' and 'RSA1_5'".
+This is the working area for the IETF [JOSE Working Group](https://datatracker.ietf.org/group/jose/documents/) Internet-Draft, "JOSE: Deprecate 'none' and 'RSA1_5'".
 
-* [Editor's Copy](https://NeilMadden.github.io/jose-deprecate-none-rsa1_5/#go.draft-madden-jose-deprecate-none-rsa15.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-madden-jose-deprecate-none-rsa15)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-madden-jose-deprecate-none-rsa15)
-* [Compare Editor's Copy to Individual Draft](https://NeilMadden.github.io/jose-deprecate-none-rsa1_5/#go.draft-madden-jose-deprecate-none-rsa15.diff)
+* [Editor's Copy](https://NeilMadden.github.io/jose-deprecate-none-rsa1_5/#go.draft-ietf-jose-deprecate-none-rsa15.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-jose-deprecate-none-rsa15)
+* [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-jose-deprecate-none-rsa15)
+* [Compare Editor's Copy to Working Group Draft](https://NeilMadden.github.io/jose-deprecate-none-rsa1_5/#go.draft-ietf-jose-deprecate-none-rsa15.diff)
 
 
 ## Contributing

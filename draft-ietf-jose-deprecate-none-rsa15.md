@@ -25,8 +25,8 @@ venue:
 author:
  -
     fullname: Neil Madden
-    organization: Illuminated Security Ltd
-    email: neil@illuminated-security.com
+    organization: Teya
+    email: neil.madden@teya.com
 
 normative:
   RFC7518:

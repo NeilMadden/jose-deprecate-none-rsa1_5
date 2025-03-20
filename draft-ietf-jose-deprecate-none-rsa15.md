@@ -26,7 +26,7 @@ author:
  -
     fullname: Neil Madden
     organization: Teya
-    email: neil.madden@teya.com
+    email: neil.e.madden@gmail.com
 
 normative:
   RFC7518:

@@ -4,9 +4,9 @@
 
 Javascript Object Signing and Encryption                       N. Madden
 Internet-Draft                                  Illuminated Security Ltd
-Updates: 7518 (if approved)                              3 November 2024
+Updates: 7518 (if approved)                                20 March 2025
 Intended status: Standards Track                                        
-Expires: 7 May 2025
+Expires: 21 September 2025
 
 
                   JOSE: Deprecate 'none' and 'RSA1_5'
@@ -14,9 +14,11 @@ Expires: 7 May 2025
 
 Abstract
 
-   This draft updates [RFC7518] to deprecate the JWS algorithm "none"
+   This document updates [RFC7518] to deprecate the JWS algorithm "none"
    and the JWE algorithm "RSA1_5".  These algorithms have known security
-   weaknesses.
+   weaknesses.  It also updates the Review Instructions for Designated
+   Experts to establish baseline security requirements that future
+   algorithm registrations should meet.
 
 About This Document
 
@@ -52,11 +54,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 May 2025.
+   This Internet-Draft will expire on 21 September 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -92,7 +94,7 @@ Table of Contents
    (JWE).  Many of these algorithms have stood the test of time and are
    still in widespread use.  However, some algorithms have proved to be
    difficult to implement correctly leading to exploitable
-   vulnerabilities.  This draft deprecates two such algorithms:
+   vulnerabilities.  This document deprecates two such algorithms:
 
    *  The JWS "none" algorithm, which indicates that no security is
       applied to the message at all.
@@ -103,6 +105,12 @@ Table of Contents
    Note that RSA signatures using PKCS#1 version 1.5 padding (RS256,
    RS384, and RS512) are unchanged by this specification and can still
    be used.
+
+   Additionally, this document also updates the Review Instructions for
+   the JOSE Designated Experts, to establish baseline security
+   requirements for future JOSE algorithm registrations.  Only
+   algorithms that are reasonably believed to satisfy these requirements
+   should be registered in future.
 
 1.1.  The 'none' algorithm
 
@@ -273,9 +281,9 @@ Table of Contents
    [I-D.irtf-cfrg-rsa-guidance]
               Kario, A., "Implementation Guidance for the PKCS #1 RSA
               Cryptography Specification", Work in Progress, Internet-
-              Draft, draft-irtf-cfrg-rsa-guidance-01, 3 September 2024,
+              Draft, draft-irtf-cfrg-rsa-guidance-03, 20 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-
-              rsa-guidance-01>.
+              rsa-guidance-03>.
 
    [IANA.jose]
               IANA, "JSON Object Signing and Encryption (JOSE)",

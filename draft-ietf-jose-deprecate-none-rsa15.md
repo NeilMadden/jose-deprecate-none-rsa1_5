@@ -123,8 +123,8 @@ JWE.
 
 ## Guidance on deprecation
 
-Both of the algorithms listed above are deprecated for use in JWS and JWE. JOSE library developers
-SHOULD deprecate support for these algorithms and commit to a timeline for removal. Application
+Both of the algorithms listed above are deprecated for use in JOSE&mdash;the `none` algorithm for JWS,
+and `RSA1_5` for JWE. JOSE library developers should deprecate support for these algorithms. Application
 developers SHOULD disable support for these algorithms by default. New specifications building on
 top of JOSE MUST NOT allow the use of either algorithm.
 

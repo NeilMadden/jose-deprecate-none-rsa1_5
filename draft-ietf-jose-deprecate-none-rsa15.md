@@ -112,7 +112,7 @@ JWS users who may be impacted by accidental acceptance of the "none" algorithm.
 
 ## The 'RSA1_5' algorithm
 
-The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding {{RFC8017}}. This
+The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding {{RFC8017}} (section 7.2). This
 padding mode has long been known to have security issues, since at least Bleichenbacher's attack in
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP {{RFC8017}} or elliptic curve encryption

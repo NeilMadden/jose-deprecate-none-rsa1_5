@@ -175,4 +175,7 @@ registry {{IANA.jose}} in Section 7.1 of {{RFC7518}} are updated to add these ad
 --- back
 
 # Acknowledgments
+
+The author would like to thank the following people for feedback and useful suggestions: Mike Ounsworth, Micheal Jones, Yaron Sheffer, and John Mattsson.
+
 {:numbered="false"}

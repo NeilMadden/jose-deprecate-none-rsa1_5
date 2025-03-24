@@ -125,7 +125,7 @@ JWE.
 
 Both of the algorithms listed above are deprecated for use in JOSE&mdash;the `none` algorithm for JWS,
 and `RSA1_5` for JWE. JOSE library developers should deprecate support for these algorithms. Application
-developers SHOULD disable support for these algorithms by default. New specifications building on
+developers MUST disable support for these algorithms by default. New specifications building on
 top of JOSE MUST NOT allow the use of either algorithm.
 
 The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are

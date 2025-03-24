@@ -30,6 +30,7 @@ author:
 
 normative:
   RFC7518:
+  RFC5116:
 
 informative:
   howmanydays:
@@ -52,6 +53,13 @@ informative:
       organization: FIRST
     target: https://www.first.org/cvss/
   IANA.jose:
+  BonehShoup:
+    title: A Graduate Course in Applied Cryptography (v0.6)
+    author:
+      - fullname: Dan Boneh
+      - fullname: Victor Shoup
+    date: 2023-01-14
+    target: https://crypto.stanford.edu/~dabo/cryptobook/BonehShoup_0_6.pdf
 
 --- abstract
 
@@ -156,13 +164,13 @@ The review instructions for the designated experts for the IANA "JSON Web Signat
 registry {{IANA.jose}} in Section 7.1 of {{RFC7518}} are updated to add these additional review criteria:
 
  - For JWS signature algorithms, only algorithms that are reasonably conjectured to meet the standard security goal
-   of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval.
+   of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval. See textbooks such as {{BonehShoup}} (section 13.1.1) for a definition of existential unforgeability.
  - For JWE key management algorithms (specified with the "alg" header), only algorithms that are reasonably
    conjectured to meet the standard security goal of indistinguishability under an adaptive chosen ciphertext
-   attack (IND-CCA2) should be considered for approval.
+   attack (IND-CCA2) should be considered for approval, as defined in textbooks such as {{BonehShoup}} (section 9.2.2 and chapter 12).
  - For JWE content encryption methods (specified with the "enc" header), only algorithms that are reasonably
    conjectured to meet the standard security goal of authenticated encryption with associated data (AEAD) should
-   be considered for approval.
+   be considered for approval. See {{RFC5116}} and textbooks, such as {{BonehShoup}} (section 9.1), for the definition of AEAD security.
 
 --- back
 

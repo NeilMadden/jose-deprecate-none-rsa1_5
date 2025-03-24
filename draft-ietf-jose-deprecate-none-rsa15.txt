@@ -84,7 +84,7 @@ Table of Contents
    5.  References
      5.1.  Normative References
      5.2.  Informative References
-   Acknowledgments
+   Appendix A.  Acknowledgments
    Author's Address
 
 1.  Introduction
@@ -317,7 +317,11 @@ Table of Contents
               RFC 8017, DOI 10.17487/RFC8017, November 2016,
               <https://www.rfc-editor.org/rfc/rfc8017>.
 
-Acknowledgments
+Appendix A.  Acknowledgments
+
+   The author would like to thank the following people for feedback and
+   useful suggestions: Mike Ounsworth, Micheal Jones, Yaron Sheffer, and
+   John Mattsson.
 
 Author's Address
 

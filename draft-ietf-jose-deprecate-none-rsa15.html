@@ -1051,7 +1051,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Madden</td>
-<td class="center">Expires 21 September 2025</td>
+<td class="center">Expires 25 September 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc7518" class="eref">7518</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-03-20" class="published">20 March 2025</time>
+<time datetime="2025-03-24" class="published">24 March 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-09-21">21 September 2025</time></dd>
+<dd class="expires"><time datetime="2025-09-25">25 September 2025</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1125,7 @@ algorithm registrations should meet.<a href="#section-abstract-1" class="pilcrow
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 21 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1287,7 +1287,7 @@ JWS users who may be impacted by accidental acceptance of the "none" algorithm.<
         <h3 id="name-the-rsa1_5-algorithm">
 <a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-the-rsa1_5-algorithm" class="section-name selfRef">The 'RSA1_5' algorithm</a>
         </h3>
-<p id="section-1.2-1">The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span>. This
+<p id="section-1.2-1">The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span> (section 7.2). This
 padding mode has long been known to have security issues, since at least Bleichenbacher's attack in
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span> or elliptic curve encryption
@@ -1302,9 +1302,9 @@ JWE.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
         <h3 id="name-guidance-on-deprecation">
 <a href="#section-1.3" class="section-number selfRef">1.3. </a><a href="#name-guidance-on-deprecation" class="section-name selfRef">Guidance on deprecation</a>
         </h3>
-<p id="section-1.3-1">Both of the algorithms listed above are deprecated for use in JWS and JWE. JOSE library developers
-<span class="bcp14">SHOULD</span> deprecate support for these algorithms and commit to a timeline for removal. Application
-developers <span class="bcp14">SHOULD</span> disable support for these algorithms by default. New specifications building on
+<p id="section-1.3-1">Both of the algorithms listed above are deprecated for use in JOSE—the <code>none</code> algorithm for JWS,
+and <code>RSA1_5</code> for JWE. JOSE library developers should deprecate support for these algorithms. Application
+developers <span class="bcp14">MUST</span> disable support for these algorithms by default. New specifications building on
 top of JOSE <span class="bcp14">MUST NOT</span> allow the use of either algorithm.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
 <p id="section-1.3-2">The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are
 "Prohibited". The algorithms identified in this document are to be marked as Deprecated only. Existing
@@ -1330,7 +1330,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-security-considerations">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-3-1">No security issues are introduced by this specification.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">This entire document is concerned with security, since the security of JOSE implementations directly affects the security of systems that include them (see for example the long list of CVEs in Sec. 1.1).<a href="#section-3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1364,17 +1364,17 @@ registry <span>[<a href="#IANA.jose" class="cite xref">IANA.jose</a>]</span> in 
 <ul class="normal">
 <li class="normal" id="section-4.2-2.1">
             <p id="section-4.2-2.1.1">For JWS signature algorithms, only algorithms that are reasonably conjectured to meet the standard security goal
-of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval.<a href="#section-4.2-2.1.1" class="pilcrow">¶</a></p>
+of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval. See textbooks such as <span>[<a href="#BonehShoup" class="cite xref">BonehShoup</a>]</span> (section 13.1.1) for a definition of existential unforgeability.<a href="#section-4.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-4.2-2.2">
             <p id="section-4.2-2.2.1">For JWE key management algorithms (specified with the "alg" header), only algorithms that are reasonably
 conjectured to meet the standard security goal of indistinguishability under an adaptive chosen ciphertext
-attack (IND-CCA2) should be considered for approval.<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
+attack (IND-CCA2) should be considered for approval, as defined in textbooks such as <span>[<a href="#BonehShoup" class="cite xref">BonehShoup</a>]</span> (section 9.2.2 and chapter 12).<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-4.2-2.3">
             <p id="section-4.2-2.3.1">For JWE content encryption methods (specified with the "enc" header), only algorithms that are reasonably
 conjectured to meet the standard security goal of authenticated encryption with associated data (AEAD) should
-be considered for approval.<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></p>
+be considered for approval. See <span>[<a href="#RFC5116" class="cite xref">RFC5116</a>]</span> and textbooks, such as <span>[<a href="#BonehShoup" class="cite xref">BonehShoup</a>]</span> (section 9.1), for the definition of AEAD security.<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1396,6 +1396,10 @@ be considered for approval.<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC5116">[RFC5116]</dt>
+        <dd>
+<span class="refAuthor">McGrew, D.</span>, <span class="refTitle">"An Interface and Algorithms for Authenticated Encryption"</span>, <span class="seriesInfo">RFC 5116</span>, <span class="seriesInfo">DOI 10.17487/RFC5116</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5116">https://www.rfc-editor.org/rfc/rfc5116</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7518">[RFC7518]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Algorithms (JWA)"</span>, <span class="seriesInfo">RFC 7518</span>, <span class="seriesInfo">DOI 10.17487/RFC7518</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7518">https://www.rfc-editor.org/rfc/rfc7518</a>&gt;</span>. </dd>
@@ -1413,6 +1417,10 @@ be considered for approval.<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="BonehShoup">[BonehShoup]</dt>
+        <dd>
+<span class="refAuthor">Boneh, D.</span> and <span class="refAuthor">V. Shoup</span>, <span class="refTitle">"A Graduate Course in Applied Cryptography (v0.6)"</span>, <time datetime="2023-01-14" class="refDate">14 January 2023</time>, <span>&lt;<a href="https://crypto.stanford.edu/~dabo/cryptobook/BonehShoup_0_6.pdf">https://crypto.stanford.edu/~dabo/cryptobook/BonehShoup_0_6.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="CVE">[CVE]</dt>
         <dd>
 <span class="refAuthor">MITRE</span>, <span class="refTitle">"Common Vulnerability Enumeration Database"</span>, <span>n.d.</span>, <span>&lt;<a href="https://cve.mitre.org">https://cve.mitre.org</a>&gt;</span>. </dd>

@@ -147,7 +147,7 @@ consider adopting alternatives in future updates.
 
 # Security Considerations
 
-No security issues are introduced by this specification.
+This entire document is concerned with security, since the security of JOSE implementations directly affects the security of systems that include them (see for example the long list of CVEs in Sec. 1.1).
 
 # IANA Considerations
 

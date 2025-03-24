@@ -30,6 +30,7 @@ author:
 
 normative:
   RFC7518:
+  RFC5116:
 
 informative:
   howmanydays:
@@ -52,6 +53,13 @@ informative:
       organization: FIRST
     target: https://www.first.org/cvss/
   IANA.jose:
+  BonehShoup:
+    title: A Graduate Course in Applied Cryptography (v0.6)
+    author:
+      - fullname: Dan Boneh
+      - fullname: Victor Shoup
+    date: 2023-01-14
+    target: https://crypto.stanford.edu/~dabo/cryptobook/BonehShoup_0_6.pdf
 
 --- abstract
 
@@ -112,7 +120,7 @@ JWS users who may be impacted by accidental acceptance of the "none" algorithm.
 
 ## The 'RSA1_5' algorithm
 
-The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding {{RFC8017}}. This
+The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding {{RFC8017}} (section 7.2). This
 padding mode has long been known to have security issues, since at least Bleichenbacher's attack in
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP {{RFC8017}} or elliptic curve encryption
@@ -123,9 +131,9 @@ JWE.
 
 ## Guidance on deprecation
 
-Both of the algorithms listed above are deprecated for use in JWS and JWE. JOSE library developers
-SHOULD deprecate support for these algorithms and commit to a timeline for removal. Application
-developers SHOULD disable support for these algorithms by default. New specifications building on
+Both of the algorithms listed above are deprecated for use in JOSE&mdash;the `none` algorithm for JWS,
+and `RSA1_5` for JWE. JOSE library developers should deprecate support for these algorithms. Application
+developers MUST disable support for these algorithms by default. New specifications building on
 top of JOSE MUST NOT allow the use of either algorithm.
 
 The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are
@@ -139,7 +147,7 @@ consider adopting alternatives in future updates.
 
 # Security Considerations
 
-No security issues are introduced by this specification.
+This entire document is concerned with security, since the security of JOSE implementations directly affects the security of systems that include them (see for example the long list of CVEs in Sec. 1.1).
 
 # IANA Considerations
 
@@ -156,13 +164,13 @@ The review instructions for the designated experts for the IANA "JSON Web Signat
 registry {{IANA.jose}} in Section 7.1 of {{RFC7518}} are updated to add these additional review criteria:
 
  - For JWS signature algorithms, only algorithms that are reasonably conjectured to meet the standard security goal
-   of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval.
+   of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval. See textbooks such as {{BonehShoup}} (section 13.1.1) for a definition of existential unforgeability.
  - For JWE key management algorithms (specified with the "alg" header), only algorithms that are reasonably
    conjectured to meet the standard security goal of indistinguishability under an adaptive chosen ciphertext
-   attack (IND-CCA2) should be considered for approval.
+   attack (IND-CCA2) should be considered for approval, as defined in textbooks such as {{BonehShoup}} (section 9.2.2 and chapter 12).
  - For JWE content encryption methods (specified with the "enc" header), only algorithms that are reasonably
    conjectured to meet the standard security goal of authenticated encryption with associated data (AEAD) should
-   be considered for approval.
+   be considered for approval. See {{RFC5116}} and textbooks, such as {{BonehShoup}} (section 9.1), for the definition of AEAD security.
 
 --- back
 

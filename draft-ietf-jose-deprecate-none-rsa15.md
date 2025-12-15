@@ -113,7 +113,7 @@ indicating the severity of the impact:
 
 Many other vulnerabilities have been reported without an accompanying CVE, which we do not list here.
 
-Although there are some legitimate use-cases for Unsecured JWS, these are relatively few in number
+Although there are some ill-conceived use-cases for Unsecured JWS, these are relatively few in number
 and can easily be satisfied by alternative means. The small risk of breaking
 some of these use-cases is far outweighed by the improvement in security for the majority of
 JWS users who may be impacted by accidental acceptance of the "none" algorithm.

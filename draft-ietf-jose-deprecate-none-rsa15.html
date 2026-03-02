@@ -12,23 +12,22 @@
 Instructions for Designated Experts to establish baseline security requirements that future
 algorithm registrations should meet. 
     ' name="description">
-<meta content="xml2rfc 3.30.2" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-jose-deprecate-none-rsa15-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.2
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
-    intervaltree 3.1.0
+    intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 5.3.1
-    platformdirs 4.4.0
+    lxml 6.0.2
+    platformdirs 4.5.1
     pycountry 24.6.1
-    PyYAML 6.0.2
+    PyYAML 6.0.3
     requests 2.32.5
-    setuptools 80.9.0
-    wcwidth 0.2.13
+    wcwidth 0.3.0
 -->
 <link href="draft-ietf-jose-deprecate-none-rsa15.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -169,7 +168,7 @@ algorithm registrations should meet.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: 'Oxygen Mono';
@@ -177,7 +176,8 @@ algorithm registrations should meet.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 }
 
 @font-face {
@@ -569,6 +569,7 @@ aside, blockquote {
 }
 blockquote {
   margin: 1em 0;
+  border-left: 2px var(--pilcrow-strong) solid;
 }
 cite {
   display: block;
@@ -639,7 +640,7 @@ a.pilcrow {
   }
 }
 @media not print {
-  :hover > a.pilcrow {
+  :hover > a.pilcrow, a.pilcrow:focus {
     opacity: 1;
   }
   a.pilcrow[href]:hover {
@@ -1047,11 +1048,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">JOSE: Deprecate 'none' and 'RSA1_5'</td>
-<td class="right">September 2025</td>
+<td class="right">March 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Madden</td>
-<td class="center">Expires 23 March 2026</td>
+<td class="center">Expires 3 September 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc7518" class="eref">7518</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-19" class="published">19 September 2025</time>
+<time datetime="2026-03-02" class="published">2 March 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-23">23 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-09-03">3 September 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1126,7 @@ algorithm registrations should meet.<a href="#section-abstract-1" class="pilcrow
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1134,7 +1135,7 @@ algorithm registrations should meet.<a href="#section-abstract-1" class="pilcrow
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2025 IETF Trust and the persons identified as the
+            Copyright (c) 2026 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1276,9 +1277,11 @@ indicating the severity of the impact:<a href="#section-1.1-1" class="pilcrow">�
 </li>
         </ul>
 <p id="section-1.1-3">Many other vulnerabilities have been reported without an accompanying CVE, which we do not list here.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
-<p id="section-1.1-4">Although there are some legitimate use-cases for Unsecured JWS, these are relatively few in number
-and can easily be satisfied by alternative means. The small risk of breaking
-some of these use-cases is far outweighed by the improvement in security for the majority of
+<p id="section-1.1-4">Although there are some historical use-cases for Unsecured JWS that are not security vulnerabilities,
+these are relatively few in number and can easily be satisfied by alternative means. For example, two
+of these are in OpenID Connect <span>[<a href="#OpenID.Core" class="cite xref">OpenID.Core</a>]</span>: (1) securing unsigned ID Tokens via transmission over
+TLS in Section 3.1.3.7 and (2) the use of unsigned request objects in Section 6.1.  The small risk of
+breaking some of these use-cases is far outweighed by the improvement in security for the majority of
 JWS users who may be impacted by accidental acceptance of the "none" algorithm.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1445,6 +1448,10 @@ be considered for approval. See <span>[<a href="#RFC5116" class="cite xref">RFC5
         <dd>
 <span class="refAuthor">Barker, E.</span> and <span class="refAuthor">A. Roginsky</span>, <span class="refTitle">"Transitioning the use of cryptographic algorithms and key lengths"</span>, <span class="refContent">National Institute of Standards and Technology</span>, <span class="seriesInfo">DOI 10.6028/nist.sp.800-131ar2</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.sp.800-131ar2">https://doi.org/10.6028/nist.sp.800-131ar2</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="OpenID.Core">[OpenID.Core]</dt>
+        <dd>
+<span class="refAuthor">Sakimura, N.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">de Medeiros, B.</span>, and <span class="refAuthor">C. Mortimore</span>, <span class="refTitle">"OpenID Connect Core 1.0 incorporating errata set 2"</span>, <time datetime="2023-12" class="refDate">December 2023</time>, <span>&lt;<a href="https://openid.net/specs/openid-connect-core-1_0.html">https://openid.net/specs/openid-connect-core-1_0.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8017">[RFC8017]</dt>
       <dd>
 <span class="refAuthor">Moriarty, K., Ed.</span>, <span class="refAuthor">Kaliski, B.</span>, <span class="refAuthor">Jonsson, J.</span>, and <span class="refAuthor">A. Rusch</span>, <span class="refTitle">"PKCS #1: RSA Cryptography Specifications Version 2.2"</span>, <span class="seriesInfo">RFC 8017</span>, <span class="seriesInfo">DOI 10.17487/RFC8017</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8017">https://www.rfc-editor.org/rfc/rfc8017</a>&gt;</span>. </dd>
@@ -1459,7 +1466,9 @@ be considered for approval. See <span>[<a href="#RFC5116" class="cite xref">RFC5
       <h2 id="name-acknowledgments">
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">The author would like to thank the following people for feedback and useful suggestions: Mike Ounsworth, Michael B. Jones, Yaron Sheffer, and John Mattsson.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">The author would like to thank the following people for feedback and useful suggestions:
+Mike Ounsworth, Michael B. Jones, Yaron Sheffer, Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray,
+and John Mattsson.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">

@@ -4,9 +4,9 @@
 
 Javascript Object Signing and Encryption                       N. Madden
 Internet-Draft                                                 Hazelcast
-Updates: 7518 (if approved)                            19 September 2025
+Updates: 7518 (if approved)                                 2 March 2026
 Intended status: Standards Track                                        
-Expires: 23 March 2026
+Expires: 3 September 2026
 
 
                   JOSE: Deprecate 'none' and 'RSA1_5'
@@ -54,11 +54,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 March 2026.
+   This Internet-Draft will expire on 3 September 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -162,12 +162,15 @@ Table of Contents
    Many other vulnerabilities have been reported without an accompanying
    CVE, which we do not list here.
 
-   Although there are some legitimate use-cases for Unsecured JWS, these
-   are relatively few in number and can easily be satisfied by
-   alternative means.  The small risk of breaking some of these use-
-   cases is far outweighed by the improvement in security for the
-   majority of JWS users who may be impacted by accidental acceptance of
-   the "none" algorithm.
+   Although there are some historical use-cases for Unsecured JWS that
+   are not security vulnerabilities, these are relatively few in number
+   and can easily be satisfied by alternative means.  For example, two
+   of these are in OpenID Connect [OpenID.Core]: (1) securing unsigned
+   ID Tokens via transmission over TLS in Section 3.1.3.7 and (2) the
+   use of unsigned request objects in Section 6.1.  The small risk of
+   breaking some of these use-cases is far outweighed by the improvement
+   in security for the majority of JWS users who may be impacted by
+   accidental acceptance of the "none" algorithm.
 
 1.2.  The 'RSA1_5' algorithm
 
@@ -312,6 +315,12 @@ Table of Contents
               DOI 10.6028/nist.sp.800-131ar2, March 2019,
               <https://doi.org/10.6028/nist.sp.800-131ar2>.
 
+   [OpenID.Core]
+              Sakimura, N., Bradley, J., Jones, M., de Medeiros, B., and
+              C. Mortimore, "OpenID Connect Core 1.0 incorporating
+              errata set 2", December 2023,
+              <https://openid.net/specs/openid-connect-core-1_0.html>.
+
    [RFC8017]  Moriarty, K., Ed., Kaliski, B., Jonsson, J., and A. Rusch,
               "PKCS #1: RSA Cryptography Specifications Version 2.2",
               RFC 8017, DOI 10.17487/RFC8017, November 2016,
@@ -321,7 +330,8 @@ Appendix A.  Acknowledgments
 
    The author would like to thank the following people for feedback and
    useful suggestions: Mike Ounsworth, Michael B.  Jones, Yaron Sheffer,
-   and John Mattsson.
+   Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray, and John
+   Mattsson.
 
 Author's Address
 

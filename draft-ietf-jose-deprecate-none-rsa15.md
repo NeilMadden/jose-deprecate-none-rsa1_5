@@ -60,6 +60,16 @@ informative:
       - fullname: Victor Shoup
     date: 2023-01-14
     target: https://crypto.stanford.edu/~dabo/cryptobook/BonehShoup_0_6.pdf
+  OpenID.Core:
+    title: OpenID Connect Core 1.0 incorporating errata set 2
+    target: https://openid.net/specs/openid-connect-core-1_0.html
+    date: December 15, 2023
+    author:
+      - ins: N. Sakimura
+      - ins: J. Bradley
+      - ins: M. Jones
+      - ins: B. de Medeiros
+      - ins: C. Mortimore
 
 --- abstract
 
@@ -113,9 +123,11 @@ indicating the severity of the impact:
 
 Many other vulnerabilities have been reported without an accompanying CVE, which we do not list here.
 
-Although there are some legitimate use-cases for Unsecured JWS, these are relatively few in number
-and can easily be satisfied by alternative means. The small risk of breaking
-some of these use-cases is far outweighed by the improvement in security for the majority of
+Although there are some historical use-cases for Unsecured JWS that are not security vulnerabilities,
+these are relatively few in number and can easily be satisfied by alternative means. For example, two
+of these are in OpenID Connect [OpenID.Core]: (1) securing unsigned ID Tokens via transmission over
+TLS in Section 3.1.3.7 and (2) the use of unsigned request objects in Section 6.1.  The small risk of
+breaking some of these use-cases is far outweighed by the improvement in security for the majority of
 JWS users who may be impacted by accidental acceptance of the "none" algorithm.
 
 ## The 'RSA1_5' algorithm
@@ -176,6 +188,8 @@ registry {{IANA.jose}} in Section 7.1 of {{RFC7518}} are updated to add these ad
 
 # Acknowledgments
 
-The author would like to thank the following people for feedback and useful suggestions: Mike Ounsworth, Michael B. Jones, Yaron Sheffer, and John Mattsson.
+The author would like to thank the following people for feedback and useful suggestions:
+Mike Ounsworth, Michael B. Jones, Yaron Sheffer, Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray,
+and John Mattsson.
 
 {:numbered="false"}

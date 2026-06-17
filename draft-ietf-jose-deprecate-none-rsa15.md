@@ -97,15 +97,15 @@ Additionally, this document also updates the Review Instructions for the JOSE De
 to establish baseline security requirements for future JOSE algorithm registrations. Only algorithms
 that are reasonably believed to satisfy these requirements should be registered in future.
 
-## The 'none' algorithm
+# The 'none' algorithm {#none}
 
 The "none" algorithm creates an Unsecured JWS, whose contents are completely unsecured as the name
 implies. Despite strong guidance in the original RFC around not accepting Unsecured JWS by default,
 many implementations have had serious bugs due to accepting this algorithm. In some cases, this has
 led to a complete loss of security as authenticity and integrity checking can be disabled by an
 adversary simply by changing the algorithm ("alg") header in the JWS. The website {{howmanydays}}
-tracks public vulnerabilities due to implementations mistakenly accepting the "none" algorithm. It
-currently lists 12 reports, many of which have high impact ratings. The following is a partial list
+tracks public vulnerabilities due to implementations mistakenly accepting the "none" algorithm. At
+the time of writing it lists 17 reports, many of which have high impact ratings. The following is a partial list
 of issues known to have been caused by misuse of the "none" algorithm, with a Common Vulnerability
 Enumeration {{CVE}} identifier, and a Common Vulnerability Scoring System {{CVSS}} score
 indicating the severity of the impact:
@@ -125,14 +125,14 @@ Many other vulnerabilities have been reported without an accompanying CVE, which
 
 Although there are some historical use-cases for Unsecured JWS that are not security vulnerabilities,
 these are relatively few in number and can easily be satisfied by alternative means. For example, two
-of these are in OpenID Connect [OpenID.Core]: (1) securing unsigned ID Tokens via transmission over
+of these are in OpenID Connect {{OpenID.Core}}: (1) securing unsigned ID Tokens via transmission over
 TLS in Section 3.1.3.7 and (2) the use of unsigned request objects in Section 6.1.  The small risk of
 breaking some of these use-cases is far outweighed by the improvement in security for the majority of
 JWS users who may be impacted by accidental acceptance of the "none" algorithm.
 
-## The 'RSA1_5' algorithm
+# The 'RSA1_5' algorithm
 
-The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding {{RFC8017}} (section 7.2). This
+The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding {{Section 7.2 of RFC8017}}. This
 padding mode has long been known to have security issues, since at least Bleichenbacher's attack in
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP {{RFC8017}} or elliptic curve encryption
@@ -141,7 +141,7 @@ use since the end of 2023 {{NIST.SP800-131Ar2}} and a CFRG draft {{I-D.irtf-cfrg
 this encryption mode for IETF protocols. This document therefore also deprecates this algorithm for
 JWE.
 
-## Guidance on deprecation
+# Guidance on deprecation
 
 Both of the algorithms listed above are deprecated for use in JOSE&mdash;the `none` algorithm for JWS,
 and `RSA1_5` for JWE. JOSE library developers should deprecate support for these algorithms. Application
@@ -150,7 +150,7 @@ top of JOSE MUST NOT allow the use of either algorithm.
 
 The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are
 "Prohibited". The algorithms identified in this document are to be marked as Deprecated only. Existing
-specifications and applictions that make use of these algorithms can continue to do so, but should
+specifications and applications that make use of these algorithms can continue to do so, but should
 consider adopting alternatives in future updates.
 
 # Conventions and Definitions
@@ -159,7 +159,7 @@ consider adopting alternatives in future updates.
 
 # Security Considerations
 
-This entire document is concerned with security, since the security of JOSE implementations directly affects the security of systems that include them (see for example the long list of CVEs in Sec. 1.1).
+This entire document is concerned with security, since the security of JOSE implementations directly affects the security of systems that include them (see for example the long list of CVEs in {{none}}).
 
 # IANA Considerations
 
@@ -173,7 +173,7 @@ The following changes are to be made to the IANA JOSE Web Signature and Encrypti
 ## Updated Review Instructions for Designated Experts
 
 The review instructions for the designated experts for the IANA "JSON Web Signature and Encryption Algorithms"
-registry {{IANA.jose}} in Section 7.1 of {{RFC7518}} are updated to add these additional review criteria:
+registry {{IANA.jose}} in {{Section 7.1 of RFC7518}} are updated to add these additional review criteria:
 
  - For JWS signature algorithms, only algorithms that are believed to meet the standard security goal
    of existential unforgeability under a chosen message attack (EUF-CMA) should be considered for approval. See textbooks such as {{BonehShoup}} (Section 13.1.1) for a definition of existential unforgeability.

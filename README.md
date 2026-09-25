@@ -1,3 +1,5 @@
+<!-- regenerate: on (set to off if you edit this file) -->
+
 # JOSE: Deprecate 'none' and 'RSA1_5'
 
 This is the working area for the IETF [JOSE Working Group](https://datatracker.ietf.org/group/jose/documents/) Internet-Draft, "JOSE: Deprecate 'none' and 'RSA1_5'".
@@ -13,9 +15,8 @@ This is the working area for the IETF [JOSE Working Group](https://datatracker.i
 See the
 [guidelines for contributions](https://github.com/NeilMadden/jose-deprecate-none-rsa1_5/blob/main/CONTRIBUTING.md).
 
-Contributions can be made by creating pull requests.
-The GitHub interface supports creating pull requests using the Edit (✏) button.
-
+The contributing file also has tips on how to make contributions, if you
+don't already know how to do that.
 
 ## Command Line Usage
 

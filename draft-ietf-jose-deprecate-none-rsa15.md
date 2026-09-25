@@ -73,7 +73,7 @@ informative:
 
 --- abstract
 
-This document updates {{RFC7518}} to deprecate the JWS algorithm "none" and the JWE algorithm
+This document updates RFC 7518 to deprecate the JWS algorithm "none" and the JWE algorithm
 "RSA1_5". These algorithms have known security weaknesses. It also updates the Review
 Instructions for Designated Experts to establish baseline security requirements that future
 algorithm registrations are expected to meet.
@@ -88,7 +88,8 @@ and are still in widespread use. However, some algorithms have proved to be diff
 correctly leading to exploitable vulnerabilities. This document deprecates two such algorithms:
 
  - The JWS "none" algorithm, which indicates that no security is applied to the message at all.
- - The JWE "RSA1_5" algorithm, which indicates RSA encryption with PKCS#1 version 1.5 padding.
+ - The JWE "RSA1_5" algorithm, which indicates RSA encryption using PKCS#1 version 1.5 (RSAES-PKCS1-v1_5
+in {{RFC8017}}).
 
 Note that RSA signatures using PKCS#1 version 1.5 padding ("RS256", "RS384", and "RS512") are
 unchanged by this specification and can still be used.
@@ -96,6 +97,10 @@ unchanged by this specification and can still be used.
 Additionally, this document also updates the Review Instructions for the JOSE Designated Experts,
 to establish baseline security requirements for future JOSE algorithm registrations. Only algorithms
 that are reasonably believed to satisfy these requirements are expected to be registered in the future.
+
+# Conventions and Definitions
+
+{::boilerplate bcp14-tagged}
 
 # The 'none' algorithm {#none}
 
@@ -143,7 +148,7 @@ JWE.
 
 # Guidance on deprecation
 
-Both of the algorithms listed above are deprecated for use in JOSE&mdash;the "none" algorithm for JWS,
+Both of the algorithms listed above are deprecated for use in JOSE: the "none" algorithm for JWS,
 and "RSA1_5" for JWE. JOSE library developers SHOULD deprecate support for these algorithms. Application
 developers MUST disable support for these algorithms by default. Consistent with the existing requirement
 in {{Section 3.6 of RFC7518}} that implementations "MUST NOT accept Unsecured JWSs by default", an
@@ -155,10 +160,6 @@ The IANA algorithm registry distinguishes between algorithms that are "Deprecate
 "Prohibited". The algorithms identified in this document are to be marked as Deprecated only. Existing
 specifications and applications that make use of these algorithms can continue to do so, but are
 encouraged to adopt alternatives in future updates.
-
-# Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
 
 # Security Considerations
 
@@ -175,10 +176,11 @@ The following changes are to be made to the IANA JOSE Web Signature and Encrypti
 
 ## Updated Review Instructions for Designated Experts
 
-The review instructions for the designated experts for the IANA "JSON Web Signature and Encryption Algorithms"
+The review instructions for the designated experts (DEs) for the IANA "JSON Web Signature and Encryption Algorithms"
 registry {{IANA.jose}} in {{Section 7.1 of RFC7518}} are updated to add the following review criteria. As with
 the existing criteria in {{Section 7.1 of RFC7518}}, these criteria do not apply to algorithms being registered
-as Deprecated or Prohibited.
+as Deprecated or Prohibited. The following bullet points are added to the instructions for DEs, after the third
+paragraph of {{Section 7.1 of RFC7518}}:
 
  - For JWS signature and MAC algorithms (the "alg" parameter values used with JWS), only algorithms that are
    reasonably believed to meet the standard security goal of existential unforgeability under a chosen message
@@ -200,6 +202,6 @@ as Deprecated or Prohibited.
 
 The author would like to thank the following people for feedback and useful suggestions:
 Mike Ounsworth, Michael B. Jones, Yaron Sheffer, Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray,
-and John Mattsson.
+John Mattsson, Deb Cooley, and Karen O'Donoghue.
 
 {:numbered="false"}

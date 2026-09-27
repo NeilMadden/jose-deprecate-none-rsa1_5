@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-30T02:00:49.632672+00:00",
+  "timestamp": "2026-09-27T02:26:21.016597+00:00",
   "repo": "NeilMadden/jose-deprecate-none-rsa1_5",
   "labels": [
     {
@@ -217,6 +217,117 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOLfzqsM67hpqE",
+      "title": "less legitimization of past misktakes",
+      "url": "https://github.com/NeilMadden/jose-deprecate-none-rsa1_5/pull/8",
+      "state": "CLOSED",
+      "author": "bc-pi",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "see https://mailarchive.ietf.org/arch/msg/jose/wBQR1eCcZ4rpqsPV2qJ8NCnT9Fk/ for more context",
+      "createdAt": "2026-01-05T12:36:39Z",
+      "updatedAt": "2026-03-02T09:59:01Z",
+      "baseRepository": "NeilMadden/jose-deprecate-none-rsa1_5",
+      "baseRefName": "main",
+      "baseRefOid": "b8bf605d341245941b0ddfc6e1219409c9ed5d3a",
+      "headRepository": "bc-pi/jose-deprecate-none-rsa1_5",
+      "headRefName": "patch-1",
+      "headRefOid": "d86c5651e289ff2e48d71053380c1ef5e95c243c",
+      "closedAt": "2026-03-02T09:59:01Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "NeilMadden",
+          "authorAssociation": "OWNER",
+          "body": "Dropped the ball on this one, but I think it's been pre-empted by the consensus call on the list anyway....",
+          "createdAt": "2026-02-24T15:26:07Z",
+          "updatedAt": "2026-02-24T15:26:07Z"
+        },
+        {
+          "author": "NeilMadden",
+          "authorAssociation": "OWNER",
+          "body": "Closing in favour of consensus text",
+          "createdAt": "2026-03-02T09:59:01Z",
+          "updatedAt": "2026-03-02T09:59:01Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOLfzqsM7HTD2m",
+      "title": "Update text after WG consensus call",
+      "url": "https://github.com/NeilMadden/jose-deprecate-none-rsa1_5/pull/9",
+      "state": "MERGED",
+      "author": "NeilMadden",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Also updates the acknowledgements",
+      "createdAt": "2026-03-02T10:57:04Z",
+      "updatedAt": "2026-03-02T10:59:01Z",
+      "baseRepository": "NeilMadden/jose-deprecate-none-rsa1_5",
+      "baseRefName": "main",
+      "baseRefOid": "b8bf605d341245941b0ddfc6e1219409c9ed5d3a",
+      "headRepository": "NeilMadden/jose-deprecate-none-rsa1_5",
+      "headRefName": "oidc_consensus",
+      "headRefOid": "6158c349e615107fb5321846333ceab540abe8ea",
+      "closedAt": "2026-03-02T10:58:55Z",
+      "mergedAt": "2026-03-02T10:58:55Z",
+      "mergedBy": "NeilMadden",
+      "mergeCommit": {
+        "oid": "c6221a0afbf7b9bf32585940d2ed149c952b07a5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOLfzqsM7nV60A",
+      "title": "simple editorial fixes",
+      "url": "https://github.com/NeilMadden/jose-deprecate-none-rsa1_5/pull/10",
+      "state": "MERGED",
+      "author": "panva",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-06-17T06:37:02Z",
+      "updatedAt": "2026-06-17T21:29:51Z",
+      "baseRepository": "NeilMadden/jose-deprecate-none-rsa1_5",
+      "baseRefName": "main",
+      "baseRefOid": "c6221a0afbf7b9bf32585940d2ed149c952b07a5",
+      "headRepository": "panva/jose-deprecate-none-rsa1_5",
+      "headRefName": "fixes",
+      "headRefOid": "57d1ec61738cc44e8c094e4b64a2c10373ee763c",
+      "closedAt": "2026-06-17T21:20:35Z",
+      "mergedAt": "2026-06-17T21:20:35Z",
+      "mergedBy": "NeilMadden",
+      "mergeCommit": {
+        "oid": "d14e7c66a62e0bb624a7e085b47fd0c7a3b01012"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLfzqsM8AAAABDWU1kg",
+          "commit": {
+            "abbreviatedOid": "57d1ec6"
+          },
+          "author": "NeilMadden",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Thanks @panva , these are great changes! \ud83d\ude4f ",
+          "createdAt": "2026-06-17T21:17:50Z",
+          "updatedAt": "2026-06-17T21:17:50Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

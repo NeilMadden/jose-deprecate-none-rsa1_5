@@ -201,7 +201,7 @@ paragraph of {{Section 7.1 of RFC7518}}:
 # Acknowledgments
 
 The author would like to thank the following people for feedback and useful suggestions:
-Mike Ounsworth, Michael B. Jones, Yaron Sheffer, Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray,
+Mike Ounsworth, Michael B.&nbsp;Jones, Yaron Sheffer, Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray,
 John Mattsson, Deb Cooley, and Karen O'Donoghue.
 
 {:numbered="false"}

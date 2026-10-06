@@ -4,9 +4,9 @@
 
 Javascript Object Signing and Encryption                       N. Madden
 Internet-Draft                                                 Hazelcast
-Updates: 7518 (if approved)                            25 September 2026
+Updates: 7518 (if approved)                               6 October 2026
 Intended status: Standards Track                                        
-Expires: 29 March 2027
+Expires: 9 April 2027
 
 
                   JOSE: Deprecate 'none' and 'RSA1_5'
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 March 2027.
+   This Internet-Draft will expire on 9 April 2027.
 
 Copyright Notice
 
@@ -343,7 +343,7 @@ Table of Contents
 Appendix A.  Acknowledgments
 
    The author would like to thank the following people for feedback and
-   useful suggestions: Mike Ounsworth, Michael B.  Jones, Yaron Sheffer,
+   useful suggestions: Mike Ounsworth, Michael B. Jones, Yaron Sheffer,
    Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray, John Mattsson,
    Deb Cooley, and Karen O'Donoghue.
 

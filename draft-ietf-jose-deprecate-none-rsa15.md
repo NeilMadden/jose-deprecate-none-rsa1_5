@@ -184,17 +184,17 @@ paragraph of {{Section 7.1 of RFC7518}}:
 
  - For JWS signature and MAC algorithms (the "alg" parameter values used with JWS), only algorithms that are
    reasonably believed to meet the standard security goal of existential unforgeability under a chosen message
-   attack (EUF-CMA) are to be approved. See textbooks such as {{BonehShoup}} (Section 13.1.1) for a definition
-   of existential unforgeability.
+   attack (EUF-CMA) are to be considered for approval. See textbooks such as {{BonehShoup}} (Section 13.1.1) for a
+   definition of existential unforgeability.
  - For JWE key management algorithms (the "alg" parameter values used with JWE), only algorithms for which the
    resulting JWE encryption process as a whole is reasonably believed to meet the standard security goal of
-   indistinguishability under an adaptive chosen ciphertext attack (IND-CCA2) are to be approved. This goal
-   applies to the entire JWE encryption process and not to the key management algorithm in isolation. See
+   indistinguishability under an adaptive chosen ciphertext attack (IND-CCA2) are to be considered for approval. This
+   goal applies to the entire JWE encryption process and not to the key management algorithm in isolation. See
    textbooks such as {{BonehShoup}} (Section 9.2.2 and Chapter 12).
  - For JWE content encryption methods (the "enc" parameter values used with JWE), only algorithms that are
    reasonably believed to meet the standard security goal of authenticated encryption with associated data
-   (AEAD) are to be approved. See {{RFC5116}}, and textbooks such as {{BonehShoup}} (Section 9.1), for the
-   definition of AEAD security.
+   (AEAD) are to be considered for approval. See {{RFC5116}}, and textbooks such as {{BonehShoup}} (Section 9.1), for
+   the definition of AEAD security.
 
 --- back
 
@@ -202,6 +202,6 @@ paragraph of {{Section 7.1 of RFC7518}}:
 
 The author would like to thank the following people for feedback and useful suggestions:
 Mike Ounsworth, Michael B.&nbsp;Jones, Yaron Sheffer, Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray,
-John Mattsson, Deb Cooley, and Karen O'Donoghue.
+John Mattsson, Deb Cooley, Karen O'Donoghue, and Barry Leiba.
 
 {:numbered="false"}

@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-27T02:26:21.016597+00:00",
+  "timestamp": "2026-10-18T02:02:51.737793+00:00",
   "repo": "NeilMadden/jose-deprecate-none-rsa1_5",
   "labels": [
     {
@@ -328,6 +328,40 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOLfzqsM8AAAABI0XtsA",
+      "title": "Minor edits suggestions from Med's IESG Review",
+      "url": "https://github.com/NeilMadden/jose-deprecate-none-rsa1_5/pull/11",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Feel free to grab whatever useful for you.",
+      "createdAt": "2026-10-16T10:06:16Z",
+      "updatedAt": "2026-10-16T10:56:01Z",
+      "baseRepository": "NeilMadden/jose-deprecate-none-rsa1_5",
+      "baseRefName": "main",
+      "baseRefOid": "c8c19080ffe1c50bf6e56d6669aee1e19ae9aa18",
+      "headRepository": "boucadair/jose-deprecate-none-rsa1_5",
+      "headRefName": "patch-1",
+      "headRefOid": "338cc8290938991852bd5e157c778d59158b7e2e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "NeilMadden",
+          "authorAssociation": "OWNER",
+          "body": "Thanks, looks good. I will review more carefully later today.",
+          "createdAt": "2026-10-16T10:56:01Z",
+          "updatedAt": "2026-10-16T10:56:01Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }

@@ -31,12 +31,13 @@ author:
 normative:
   RFC7518:
   RFC5116:
+  RFC9864:
 
 informative:
   howmanydays:
    author:
      fullname: James Sanderson
-   date: 2023-09-25
+   date: 2026-09-26
    title: "How Many Days Has It Been Since a JWT alg:none Vulnerability?"
    target: https://github.com/zofrex/howmanydayssinceajwtalgnonevuln/blob/deploy/data/vulns.yml
   RFC8017:
@@ -111,24 +112,8 @@ implies. Despite strong guidance in {{Section 3.6 of RFC7518}} to not accepting 
 many implementations have had serious bugs due to accepting this algorithm. In some cases, this has
 led to a complete loss of security as authenticity and integrity checking can be disabled by an
 adversary simply by changing the algorithm ("alg") header in the JWS. For example, {{howmanydays}}
-tracks public vulnerabilities due to implementations mistakenly accepting the "none" algorithm. At
-the time of writing it lists 17 reports, many of which have high impact ratings. The following is a partial list
-of issues known to have been caused by misuse of the "none" algorithm, with a Common Vulnerability
-Enumeration {{CVE}} identifier and a Common Vulnerability Scoring System {{CVSS}} score
-indicating the severity of the impact:
-
- - [CVE-2017-10862](https://nvd.nist.gov/vuln/detail/CVE-2017-10862) - CVSS: 5.3 (Medium)
- - [CVE-2018-1000531](https://nvd.nist.gov/vuln/detail/CVE-2018-1000531) - CVSS: 7.5 (High)
- - [CVE-2020-15957](https://nvd.nist.gov/vuln/detail/CVE-2020-15957) - CVSS: 7.5 (High)
- - [CVE-2021-22160](https://nvd.nist.gov/vuln/detail/CVE-2021-22160) - CVSS: 9.8 (Critical)
- - [CVE-2021-29500](https://nvd.nist.gov/vuln/detail/CVE-2021-29500) - CVSS: 7.5 (High)
- - [CVE-2021-29451](https://nvd.nist.gov/vuln/detail/CVE-2021-29451) - CVSS: 9.1 (Critical)
- - [CVE-2021-29455](https://nvd.nist.gov/vuln/detail/CVE-2021-29455) - CVSS: 7.5 (High)
- - [CVE-2021-32631](https://nvd.nist.gov/vuln/detail/CVE-2021-32631) - CVSS: 6.5 (Medium)
- - [CVE-2022-23540](https://nvd.nist.gov/vuln/detail/CVE-2022-23540) - CVSS: 7.6 (High)
- - [CVE-2023-29357](https://nvd.nist.gov/vuln/detail/CVE-2023-29357) - CVSS: 9.8 (Critical)
-
-Many other vulnerabilities have been reported without an accompanying CVE, which are not listed here.
+tracks public vulnerabilities due to implementations mistakenly accepting the "none" algorithm. As
+of October 2026 it lists 19 reports, many of which have high or critical impact ratings.
 
 Although there are some historical uses for Unsecured JWS that are not security vulnerabilities,
 these are relatively few in number and can easily be satisfied by alternative means. For example, two
@@ -159,7 +144,8 @@ objects or operations that require it and not at a global level. New specificati
 JOSE MUST NOT allow the use of either algorithm.
 
 The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are
-"Prohibited". The algorithms identified in this document are to be marked as Deprecated only. Existing
+"Prohibited". These terms are defined in {{Section 4.4 of RFC9864}}.
+The algorithms identified in this document are to be marked as Deprecated only. Existing
 specifications and applications that make use of these algorithms can continue to do so, but are
 encouraged to adopt alternatives in future updates.
 
@@ -174,7 +160,9 @@ This entire document is concerned with security, since the security of JOSE impl
 The following changes are to be made to the IANA "JSON Web Signature and Encryption Algorithms" registry under "JSON Object Signing and Encryption (JOSE)" registry group:
 
  - For the entry with Algorithm Name "none", update the JOSE Implementation Requirements to "Deprecated".
- - For the entry with Algorithm Name "RSA1_5", update the JOSE Implementation Requirements to "Deprecated".
+ - For the entry with Algorithm Name "RSA1_5", update the JOSE Implementation Requirements to "Deprecated". Add
+   {{I-D.irtf-cfrg-rsa-guidance}} to the Algorithm Analysis Document(s) column.
+ - For both entries, update the Reference column to also list this document.
 
 ## Updated Review Instructions for Designated Experts
 
@@ -199,6 +187,12 @@ paragraph of {{Section 7.1 of RFC7518}}:
    reasonably believed to meet the standard security goal of authenticated encryption with associated data
    (AEAD) are to be considered for approval. See {{RFC5116}}, and textbooks such as Section 9.1 of {{BonehShoup}}, for
    the definition of AEAD security.
+
+## Additional Reference for JOSE Registry Group
+
+This document requests IANA to add this document as an additional reference
+to the "JSON Web Signature and Encryption Algorithms" registry under "JSON
+Object Signing and Encryption (JOSE)" registry group.
 
 --- back
 

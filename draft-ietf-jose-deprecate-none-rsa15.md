@@ -115,7 +115,7 @@ tracks public vulnerabilities due to implementations mistakenly accepting the "n
 of October 2026 it lists 19 reports, many of which have high or critical impact ratings.
 
 Although there are some historical uses for Unsecured JWS that are not security vulnerabilities,
-these are relatively few in number and can easily be satisfied by alternative means. For example, two
+these are relatively few and can easily be satisfied by alternative means. For example, two
 of these are in OpenID Connect {{OpenID.Core}}: (1) securing unsigned ID Tokens
 (as allowed in Section 2) via transmission over
 TLS in Section 3.1.3.7 and (2) the use of unsigned request objects in Section 6.1.  The small risk of

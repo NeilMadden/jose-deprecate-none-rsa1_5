@@ -4,9 +4,9 @@
 
 Javascript Object Signing and Encryption                       N. Madden
 Internet-Draft                                                 Hazelcast
-Updates: 7518 (if approved)                            25 September 2026
+Updates: 7518 (if approved)                              1 November 2026
 Intended status: Standards Track                                        
-Expires: 29 March 2027
+Expires: 5 May 2027
 
 
                   JOSE: Deprecate 'none' and 'RSA1_5'
@@ -14,11 +14,12 @@ Expires: 29 March 2027
 
 Abstract
 
-   This document updates RFC 7518 to deprecate the JWS algorithm "none"
-   and the JWE algorithm "RSA1_5".  These algorithms have known security
-   weaknesses.  It also updates the Review Instructions for Designated
-   Experts to establish baseline security requirements that future
-   algorithm registrations are expected to meet.
+   This document updates RFC 7518 (JSON Web Algorithms (JWA)) to
+   deprecate the JSON Web Signature (JWS) algorithm "none" and the JSON
+   Web Encryption (JWE) algorithm "RSA1_5".  These algorithms have known
+   security weaknesses.  It also updates the review instructions for
+   Designated Experts to establish baseline security requirements that
+   future algorithm registrations are expected to meet.
 
 About This Document
 
@@ -54,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 March 2027.
+   This Internet-Draft will expire on 5 May 2027.
 
 Copyright Notice
 
@@ -76,11 +77,12 @@ Table of Contents
    2.  Conventions and Definitions
    3.  The 'none' algorithm
    4.  The 'RSA1_5' algorithm
-   5.  Guidance on deprecation
+   5.  Guidance on Deprecation
    6.  Security Considerations
    7.  IANA Considerations
      7.1.  JOSE Algorithm Deprecations
      7.2.  Updated Review Instructions for Designated Experts
+     7.3.  Additional Reference for JOSE Registry Group
    8.  References
      8.1.  Normative References
      8.2.  Informative References
@@ -89,7 +91,7 @@ Table of Contents
 
 1.  Introduction
 
-   JSON Web Algorithms (JWA, [RFC7518]) introduced several standard
+   JSON Web Algorithms (JWA) [RFC7518] introduced several standard
    algorithms for both JSON Web Signature (JWS) and JSON Web Encryption
    (JWE).  Many of these algorithms have stood the test of time and are
    still in widespread use.  However, some algorithms have proved to be
@@ -102,15 +104,18 @@ Table of Contents
    *  The JWE "RSA1_5" algorithm, which indicates RSA encryption using
       PKCS#1 version 1.5 (RSAES-PKCS1-v1_5 in [RFC8017]).
 
-   Note that RSA signatures using PKCS#1 version 1.5 padding ("RS256",
-   "RS384", and "RS512") are unchanged by this specification and can
-   still be used.
+   RSA signatures using PKCS#1 version 1.5 padding ("RS256", "RS384",
+   and "RS512") are unchanged by this specification and can still be
+   used.
 
-   Additionally, this document also updates the Review Instructions for
-   the JOSE Designated Experts, to establish baseline security
-   requirements for future JOSE algorithm registrations.  Only
-   algorithms that are reasonably believed to satisfy these requirements
-   are expected to be registered in the future.
+   This document updates [RFC7518]: it changes the implementation
+   requirements of two algorithms (Section 7.1) and adds to the review
+   instructions for the JOSE Designated Experts (Section 7.2).  It
+   updates the review instructions (Section 7 of [RFC7518]), to
+   establish baseline security requirements for future JOSE algorithm
+   registrations.  Only algorithms that are reasonably assessed to
+   satisfy these requirements are expected to be registered in the
+   future.
 
 2.  Conventions and Definitions
 
@@ -120,155 +125,147 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
+   This document uses terms defined in Section 2 of [RFC7515].
+
 3.  The 'none' algorithm
 
    The "none" algorithm creates an Unsecured JWS, whose contents are
    completely unsecured as the name implies.  Despite strong guidance in
-   the original RFC around not accepting Unsecured JWS by default, many
-   implementations have had serious bugs due to accepting this
+   Section 3.6 of [RFC7518] to not accepting Unsecured JWS by default,
+   many implementations have had serious bugs due to accepting this
    algorithm.  In some cases, this has led to a complete loss of
    security as authenticity and integrity checking can be disabled by an
    adversary simply by changing the algorithm ("alg") header in the JWS.
-   The website [howmanydays] tracks public vulnerabilities due to
-   implementations mistakenly accepting the "none" algorithm.  At the
-   time of writing it lists 17 reports, many of which have high impact
-   ratings.  The following is a partial list of issues known to have
-   been caused by misuse of the "none" algorithm, with a Common
-   Vulnerability Enumeration [CVE] identifier, and a Common
-   Vulnerability Scoring System [CVSS] score indicating the severity of
-   the impact:
+   For example, [howmanydays] tracks public vulnerabilities due to
+   implementations mistakenly accepting the "none" algorithm.  As of
+   October 2026 it lists 19 reports, many of which have high or critical
+   impact ratings.
 
-   *  CVE-2017-10862 (https://nvd.nist.gov/vuln/detail/CVE-2017-10862) -
-      CVSS: 5.3 (Medium)
-
-   *  CVE-2018-1000531 (https://nvd.nist.gov/vuln/detail/CVE-
-      2018-1000531) - CVSS: 7.5 (High)
-
-   *  CVE-2020-15957 (https://nvd.nist.gov/vuln/detail/CVE-2020-15957) -
-      CVSS: 7.5 (High)
-
-   *  CVE-2021-22160 (https://nvd.nist.gov/vuln/detail/CVE-2021-22160) -
-      CVSS: 9.8 (Critical)
-
-   *  CVE-2021-29500 (https://nvd.nist.gov/vuln/detail/CVE-2021-29500) -
-      CVSS: 7.5 (High)
-
-   *  CVE-2021-29451 (https://nvd.nist.gov/vuln/detail/CVE-2021-29451) -
-      CVSS: 9.1 (Critical)
-
-   *  CVE-2021-29455 (https://nvd.nist.gov/vuln/detail/CVE-2021-29455) -
-      CVSS: 7.5 (High)
-
-   *  CVE-2021-32631 (https://nvd.nist.gov/vuln/detail/CVE-2021-32631) -
-      CVSS: 6.5 (Medium)
-
-   *  CVE-2022-23540 (https://nvd.nist.gov/vuln/detail/CVE-2022-23540) -
-      CVSS: 7.6 (High)
-
-   *  CVE-2023-29357 (https://nvd.nist.gov/vuln/detail/CVE-2023-29357) -
-      CVSS: 9.8 (Critical)
-
-   Many other vulnerabilities have been reported without an accompanying
-   CVE, which we do not list here.
-
-   Although there are some historical use-cases for Unsecured JWS that
-   are not security vulnerabilities, these are relatively few in number
-   and can easily be satisfied by alternative means.  For example, two
-   of these are in OpenID Connect [OpenID.Core]: (1) securing unsigned
-   ID Tokens via transmission over TLS in Section 3.1.3.7 and (2) the
-   use of unsigned request objects in Section 6.1.  The small risk of
-   breaking some of these use-cases is far outweighed by the improvement
-   in security for the majority of JWS users who may be impacted by
+   Although there are some historical uses for Unsecured JWS that are
+   not security vulnerabilities, these are relatively few in number and
+   can easily be satisfied by alternative means.  For example, two of
+   these are in OpenID Connect [OpenID.Core]: (1) securing unsigned ID
+   Tokens via transmission over TLS in Section 3.1.3.7 and (2) the use
+   of unsigned request objects in Section 6.1.  The small risk of
+   breaking some of these uses is far outweighed by the improvement in
+   security for the majority of JWS users who may be impacted by
    accidental acceptance of the "none" algorithm.
 
 4.  The 'RSA1_5' algorithm
 
    The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version
-   1.5 padding Section 7.2 of [RFC8017].  This padding mode has long
+   1.5 padding (Section 7.2 of [RFC8017]).  This padding mode has long
    been known to have security issues, since at least Bleichenbacher's
    attack in 1998.  It was supported in JWE due to the wide deployment
    of this algorithm, especially in legacy hardware.  However, more
    secure replacements such as OAEP [RFC8017] or elliptic curve
-   encryption algorithms are now widely available.  NIST has disallowed
-   the use of this encryption mode for federal use since the end of 2023
-   [NIST.SP800-131Ar2] and a CFRG draft [I-D.irtf-cfrg-rsa-guidance]
+   encryption algorithms are widely available since then.  US National
+   Institute of Standards and Technology (NIST) has disallowed the use
+   of this encryption mode for federal use since the end of 2023
+   [NIST.SP800-131Ar2] and a CFRG document [I-D.irtf-cfrg-rsa-guidance]
    also deprecates this encryption mode for new protocols and
    deployments.  This document therefore also deprecates this algorithm
    for JWE.
 
-5.  Guidance on deprecation
+5.  Guidance on Deprecation
 
    Both of the algorithms listed above are deprecated for use in JOSE:
    the "none" algorithm for JWS, and "RSA1_5" for JWE.  JOSE library
-   developers SHOULD deprecate support for these algorithms.
-   Application developers MUST disable support for these algorithms by
-   default.  Consistent with the existing requirement in Section 3.6 of
-   [RFC7518] that implementations "MUST NOT accept Unsecured JWSs by
-   default", an application that has a specific need for one of these
-   algorithms MAY enable it, but only for the specific objects or
-   operations that require it and not at a global level.  New
-   specifications building on top of JOSE MUST NOT allow the use of
-   either algorithm.
+   developers SHOULD deprecate support for these algorithms and SHOULD
+   NOT enable them by default.  Application developers MUST disable
+   support for these algorithms by default.  Consistent with the
+   existing requirement in Section 3.6 of [RFC7518] that implementations
+   "MUST NOT accept Unsecured JWSs by default", an application that has
+   a specific need for one of these algorithms MAY enable it, but only
+   for the specific objects or operations that require it and not at a
+   global level.  New specifications building on top of JOSE, including
+   revisions of existing specifications, MUST NOT allow the use of
+   either algorithm, including for the uses of "none" described in
+   Section 3.2 of [I-D.ietf-oauth-rfc8725bis].
 
    The IANA algorithm registry distinguishes between algorithms that are
-   "Deprecated" and those that are "Prohibited".  The algorithms
-   identified in this document are to be marked as Deprecated only.
-   Existing specifications and applications that make use of these
-   algorithms can continue to do so, but are encouraged to adopt
-   alternatives in future updates.
+   "Deprecated" and those that are "Prohibited" (Section 4.4 of
+   [RFC9864]).  The algorithms identified in this document are to be
+   marked as Deprecated only; the requirements in this section apply in
+   addition to that definition.  Existing specifications and
+   applications that make use of these algorithms can continue to do so,
+   but are encouraged to adopt alternatives in future updates.
 
 6.  Security Considerations
 
    This entire document is concerned with security, since the security
    of JOSE implementations directly affects the security of systems that
-   include them (see for example the long list of CVEs in Section 3).
+   include them (see for example the referenced vulnerabilities in
+   Section 3).
+
+   Both algorithms remain registered, and Section 5 permits an
+   application to enable either of them for specific objects or
+   operations.  Wherever they are enabled, the exposures described in
+   Section 3 and Section 4 remain; see Sections 8.3 and 8.5 of [RFC7518]
+   and Sections 11.4 and 11.5 of [RFC7516] for existing considerations
+   and mitigations.
 
 7.  IANA Considerations
 
 7.1.  JOSE Algorithm Deprecations
 
-   The following changes are to be made to the IANA JOSE Web Signature
-   and Encryption Algorithms registry:
+   The following changes are to be made to the IANA "JSON Web Signature
+   and Encryption Algorithms" registry under "JSON Object Signing and
+   Encryption (JOSE)" registry group [IANA.jose]:
 
    *  For the entry with Algorithm Name "none", update the JOSE
       Implementation Requirements to "Deprecated".
 
    *  For the entry with Algorithm Name "RSA1_5", update the JOSE
-      Implementation Requirements to "Deprecated".
+      Implementation Requirements to "Deprecated".  Add
+      [I-D.irtf-cfrg-rsa-guidance] to the Algorithm Analysis Document(s)
+      column.
+
+   *  For both entries, update the Reference column to also list this
+      document.
 
 7.2.  Updated Review Instructions for Designated Experts
 
-   The review instructions for the designated experts (DEs) for the IANA
+   The review instructions for the Designated Experts (DEs) for the IANA
    "JSON Web Signature and Encryption Algorithms" registry [IANA.jose]
    in Section 7.1 of [RFC7518] are updated to add the following review
    criteria.  As with the existing criteria in Section 7.1 of [RFC7518],
    these criteria do not apply to algorithms being registered as
-   Deprecated or Prohibited.  The following bullet points are added to
-   the instructions for DEs, after the third paragraph of Section 7.1 of
-   [RFC7518]:
+   Deprecated or Prohibited.  These criteria are in addition to the one
+   added to the same instructions by Section 4.3.1 of [RFC9864].
+
+   The following bullet points are added to the instructions for DEs,
+   after the third paragraph of Section 7.1 of [RFC7518]:
 
    *  For JWS signature and MAC algorithms (the "alg" parameter values
-      used with JWS), only algorithms that are reasonably believed to
+      used with JWS), only algorithms that are reasonably considered to
       meet the standard security goal of existential unforgeability
-      under a chosen message attack (EUF-CMA) are to be approved.  See
-      textbooks such as [BonehShoup] (Section 13.1.1) for a definition
-      of existential unforgeability.
+      under a chosen message attack (EUF-CMA) are to be considered for
+      approval.  See textbooks such as Section 13.1.1 of [BonehShoup]
+      for a definition of existential unforgeability.
 
    *  For JWE key management algorithms (the "alg" parameter values used
       with JWE), only algorithms for which the resulting JWE encryption
-      process as a whole is reasonably believed to meet the standard
+      process as a whole is reasonably considered to meet the standard
       security goal of indistinguishability under an adaptive chosen
-      ciphertext attack (IND-CCA2) are to be approved.  This goal
-      applies to the entire JWE encryption process and not to the key
-      management algorithm in isolation.  See textbooks such as
-      [BonehShoup] (Section 9.2.2 and Chapter 12).
+      ciphertext attack (IND-CCA2) are to be considered for approval.
+      This goal applies to the entire JWE encryption process and not to
+      the key management algorithm in isolation.  See textbooks such as
+      Section 9.2.2 and Chapter 12 of [BonehShoup].
 
    *  For JWE content encryption methods (the "enc" parameter values
       used with JWE), only algorithms that are reasonably believed to
       meet the standard security goal of authenticated encryption with
-      associated data (AEAD) are to be approved.  See [RFC5116], and
-      textbooks such as [BonehShoup] (Section 9.1), for the definition
-      of AEAD security.
+      associated data (AEAD) are to be considered for approval.  See
+      [RFC5116], and textbooks such as Section 9.1 of [BonehShoup], for
+      the definition of AEAD security.
+
+7.3.  Additional Reference for JOSE Registry Group
+
+   This document requests IANA to add this document as an additional
+   reference to the "JSON Web Signature and Encryption Algorithms"
+   registry under "JSON Object Signing and Encryption (JOSE)" registry
+   group.
 
 8.  References
 
@@ -283,6 +280,10 @@ Table of Contents
               Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
               <https://www.rfc-editor.org/rfc/rfc5116>.
 
+   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
+              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
+              2015, <https://www.rfc-editor.org/rfc/rfc7515>.
+
    [RFC7518]  Jones, M., "JSON Web Algorithms (JWA)", RFC 7518,
               DOI 10.17487/RFC7518, May 2015,
               <https://www.rfc-editor.org/rfc/rfc7518>.
@@ -290,6 +291,12 @@ Table of Contents
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC9864]  Jones, M.B. and O. Steele, "Fully-Specified Algorithms for
+              JSON Object Signing and Encryption (JOSE) and CBOR Object
+              Signing and Encryption (COSE)", RFC 9864,
+              DOI 10.17487/RFC9864, October 2025,
+              <https://www.rfc-editor.org/rfc/rfc9864>.
 
 8.2.  Informative References
 
@@ -307,9 +314,16 @@ Table of Contents
 
    [howmanydays]
               Sanderson, J., "How Many Days Has It Been Since a JWT
-              alg:none Vulnerability?", 25 September 2023,
+              alg:none Vulnerability?", 26 September 2026,
               <https://github.com/zofrex/howmanydayssinceajwtalgnonevuln/blob/
               deploy/data/vulns.yml>.
+
+   [I-D.ietf-oauth-rfc8725bis]
+              Sheffer, Y., Hardt, D., and M. B. Jones, "JSON Web Token
+              Best Current Practices", Work in Progress, Internet-Draft,
+              draft-ietf-oauth-rfc8725bis-10, 21 August 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              rfc8725bis-10>.
 
    [I-D.irtf-cfrg-rsa-guidance]
               Kario, A., "Implementation Guidance for the PKCS #1 RSA
@@ -335,6 +349,10 @@ Table of Contents
               errata set 2", December 2023,
               <https://openid.net/specs/openid-connect-core-1_0.html>.
 
+   [RFC7516]  Jones, M. and J. Hildebrand, "JSON Web Encryption (JWE)",
+              RFC 7516, DOI 10.17487/RFC7516, May 2015,
+              <https://www.rfc-editor.org/rfc/rfc7516>.
+
    [RFC8017]  Moriarty, K., Ed., Kaliski, B., Jonsson, J., and A. Rusch,
               "PKCS #1: RSA Cryptography Specifications Version 2.2",
               RFC 8017, DOI 10.17487/RFC8017, November 2016,
@@ -343,9 +361,9 @@ Table of Contents
 Appendix A.  Acknowledgments
 
    The author would like to thank the following people for feedback and
-   useful suggestions: Mike Ounsworth, Michael B.  Jones, Yaron Sheffer,
+   useful suggestions: Mike Ounsworth, Michael B. Jones, Yaron Sheffer,
    Brian Campbell, Aaron Parecki, Filip Skokan, Tim Bray, John Mattsson,
-   Deb Cooley, and Karen O'Donoghue.
+   Deb Cooley, Karen O'Donoghue, and Barry Leiba.
 
 Author's Address
 

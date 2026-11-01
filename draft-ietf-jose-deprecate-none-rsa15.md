@@ -140,13 +140,13 @@ JWE.
 # Guidance on Deprecation {#guidance}
 
 Both of the algorithms listed above are deprecated for use in JOSE: the "none" algorithm for JWS,
-and "RSA1_5" for JWE. JOSE library developers SHOULD deprecate support for these algorithms and SHOULD NOT
+and "RSA1_5" for JWE. JOSE library developers should deprecate support for these algorithms and should not
 enable them by default. Application
-developers MUST disable support for these algorithms by default. Consistent with the existing requirement
+developers must disable support for these algorithms by default. Consistent with the existing requirement
 in {{Section 3.6 of RFC7518}} that implementations "MUST NOT accept Unsecured JWSs by default", an
-application that has a specific need for one of these algorithms MAY enable it, but only for the specific
+application that has a specific need for one of these algorithms may enable it, but only for the specific
 objects or operations that require it and not at a global level. New specifications building on top of
-JOSE, including revisions of existing specifications, MUST NOT allow the use of either algorithm, including
+JOSE, including revisions of existing specifications, must not allow the use of either algorithm, including
 for the uses of "none" described in {{Section 3.2 of I-D.ietf-oauth-rfc8725bis}}.
 
 The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are

@@ -1284,13 +1284,13 @@ JWE.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-guidance-on-deprecation" class="section-name selfRef">Guidance on Deprecation</a>
       </h2>
 <p id="section-5-1">Both of the algorithms listed above are deprecated for use in JOSE: the "none" algorithm for JWS,
-and "RSA1_5" for JWE. JOSE library developers <span class="bcp14">SHOULD</span> deprecate support for these algorithms and <span class="bcp14">SHOULD NOT</span>
+and "RSA1_5" for JWE. JOSE library developers should deprecate support for these algorithms and should not
 enable them by default. Application
-developers <span class="bcp14">MUST</span> disable support for these algorithms by default. Consistent with the existing requirement
+developers must disable support for these algorithms by default. Consistent with the existing requirement
 in <span><a href="https://rfc-editor.org/rfc/rfc7518#section-3.6" class="relref">Section 3.6</a> of [<a href="#RFC7518" class="cite xref">RFC7518</a>]</span> that implementations "<span class="bcp14">MUST NOT</span> accept Unsecured JWSs by default", an
-application that has a specific need for one of these algorithms <span class="bcp14">MAY</span> enable it, but only for the specific
+application that has a specific need for one of these algorithms may enable it, but only for the specific
 objects or operations that require it and not at a global level. New specifications building on top of
-JOSE, including revisions of existing specifications, <span class="bcp14">MUST NOT</span> allow the use of either algorithm, including
+JOSE, including revisions of existing specifications, must not allow the use of either algorithm, including
 for the uses of "none" described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-rfc8725bis-10#section-3.2" class="relref">Section 3.2</a> of [<a href="#I-D.ietf-oauth-rfc8725bis" class="cite xref">I-D.ietf-oauth-rfc8725bis</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are
 "Prohibited" (<span><a href="https://rfc-editor.org/rfc/rfc9864#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9864" class="cite xref">RFC9864</a>]</span>).

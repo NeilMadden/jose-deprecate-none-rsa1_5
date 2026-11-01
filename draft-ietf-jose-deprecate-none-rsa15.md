@@ -34,6 +34,8 @@ normative:
   RFC9864:
 
 informative:
+  RFC7516:
+  I-D.ietf-oauth-rfc8725bis:
   howmanydays:
    author:
      fullname: James Sanderson
@@ -95,7 +97,9 @@ in {{RFC8017}}).
 RSA signatures using PKCS#1 version 1.5 padding ("RS256", "RS384", and "RS512") are
 unchanged by this specification and can still be used.
 
-Additionally, this document also updates the review instructions for the JOSE Designated Experts ({{Section 7 of !RFC7518}}),
+This document updates {{RFC7518}}: it changes the implementation
+requirements of two algorithms ({{deprecations}}) and adds to the review
+instructions for the JOSE Designated Experts ({{updated-de-instrs}}). It updates the review instructions ({{Section 7 of !RFC7518}}),
 to establish baseline security requirements for future JOSE algorithm registrations. Only algorithms
 that are reasonably assessed to satisfy these requirements are expected to be registered in the future.
 
@@ -122,7 +126,7 @@ TLS in Section 3.1.3.7 and (2) the use of unsigned request objects in Section 6.
 breaking some of these uses is far outweighed by the improvement in security for the majority of
 JWS users who may be impacted by accidental acceptance of the "none" algorithm.
 
-# The 'RSA1_5' algorithm
+# The 'RSA1_5' algorithm {#RSA1_5}
 
 The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding ({{Section 7.2 of RFC8017}}). This
 padding mode has long been known to have security issues, since at least Bleichenbacher's attack in
@@ -133,43 +137,54 @@ use since the end of 2023 {{NIST.SP800-131Ar2}} and a CFRG document {{I-D.irtf-c
 this encryption mode for new protocols and deployments. This document therefore also deprecates this algorithm for
 JWE.
 
-# Guidance on Deprecation
+# Guidance on Deprecation {#guidance}
 
 Both of the algorithms listed above are deprecated for use in JOSE: the "none" algorithm for JWS,
-and "RSA1_5" for JWE. JOSE library developers SHOULD deprecate support for these algorithms. Application
+and "RSA1_5" for JWE. JOSE library developers SHOULD deprecate support for these algorithms and SHOULD NOT
+enable them by default. Application
 developers MUST disable support for these algorithms by default. Consistent with the existing requirement
 in {{Section 3.6 of RFC7518}} that implementations "MUST NOT accept Unsecured JWSs by default", an
 application that has a specific need for one of these algorithms MAY enable it, but only for the specific
 objects or operations that require it and not at a global level. New specifications building on top of
-JOSE MUST NOT allow the use of either algorithm.
+JOSE, including revisions of existing specifications, MUST NOT allow the use of either algorithm, including
+for the uses of "none" described in {{Section 3.2 of I-D.ietf-oauth-rfc8725bis}}.
 
 The IANA algorithm registry distinguishes between algorithms that are "Deprecated" and those that are
-"Prohibited". These terms are defined in {{Section 4.4 of RFC9864}}.
-The algorithms identified in this document are to be marked as Deprecated only. Existing
-specifications and applications that make use of these algorithms can continue to do so, but are
-encouraged to adopt alternatives in future updates.
+"Prohibited" ({{Section 4.4 of RFC9864}}).
+The algorithms identified in this document are to be marked as Deprecated only; the requirements in this
+section apply in addition to that definition. Existing specifications and applications that make use of
+these algorithms can continue to do so, but are encouraged to adopt alternatives in future updates.
 
 # Security Considerations
 
-This entire document is concerned with security, since the security of JOSE implementations directly affects the security of systems that include them (see for example the long list of CVEs in {{none}}).
+This entire document is concerned with security, since the security of JOSE implementations directly affects
+the security of systems that include them (see for example the referenced vulnerabilities in {{none}}).
+
+Both algorithms remain registered, and {{guidance}} permits an
+application to enable either of them for specific objects or
+operations.  Wherever they are enabled, the exposures described in
+{{none}} and {{RSA1_5}} remain; see {{Sections 8.3 and 8.5 of RFC7518}} and
+{{Sections 11.4 and 11.5 of RFC7516}} for existing considerations and mitigations.
 
 # IANA Considerations
 
-## JOSE Algorithm Deprecations
+## JOSE Algorithm Deprecations {#deprecations}
 
-The following changes are to be made to the IANA "JSON Web Signature and Encryption Algorithms" registry under "JSON Object Signing and Encryption (JOSE)" registry group:
+The following changes are to be made to the IANA "JSON Web Signature and Encryption Algorithms" registry under
+"JSON Object Signing and Encryption (JOSE)" registry group {{IANA.jose}}:
 
  - For the entry with Algorithm Name "none", update the JOSE Implementation Requirements to "Deprecated".
  - For the entry with Algorithm Name "RSA1_5", update the JOSE Implementation Requirements to "Deprecated". Add
    {{I-D.irtf-cfrg-rsa-guidance}} to the Algorithm Analysis Document(s) column.
  - For both entries, update the Reference column to also list this document.
 
-## Updated Review Instructions for Designated Experts
+## Updated Review Instructions for Designated Experts {#updated-de-instrs}
 
 The review instructions for the Designated Experts (DEs) for the IANA "JSON Web Signature and Encryption Algorithms"
 registry {{IANA.jose}} in {{Section 7.1 of RFC7518}} are updated to add the following review criteria. As with
 the existing criteria in {{Section 7.1 of RFC7518}}, these criteria do not apply to algorithms being registered
-as Deprecated or Prohibited.
+as Deprecated or Prohibited. These criteria are in addition to the one added to the same
+instructions by {{Section 4.3.1 of RFC9864}}.
 
 The following bullet points are added to the instructions for DEs, after the third
 paragraph of {{Section 7.1 of RFC7518}}:

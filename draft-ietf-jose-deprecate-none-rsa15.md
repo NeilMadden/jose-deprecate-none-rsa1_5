@@ -5,7 +5,7 @@ ipr: trust200902
 
 docname: draft-ietf-jose-deprecate-none-rsa15-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
-updates: 7518
+updates: 7518, 7519
 number:
 date:
 consensus: true
@@ -30,10 +30,12 @@ author:
 
 normative:
   RFC7518:
+  RFC7519:
   RFC5116:
   RFC9864:
 
 informative:
+  RFC3218:
   RFC7516:
   I-D.ietf-oauth-rfc8725bis:
   howmanydays:
@@ -45,16 +47,6 @@ informative:
   RFC8017:
   I-D.irtf-cfrg-rsa-guidance:
   NIST.SP800-131Ar2: DOI.10.6028/NIST.SP.800-131Ar2
-  CVE:
-    title: Common Vulnerability Enumeration Database
-    author:
-      organization: MITRE
-    target: https://cve.mitre.org
-  CVSS:
-    title: Common Vulnerability Scoring System
-    author:
-      organization: FIRST
-    target: https://www.first.org/cvss/
   IANA.jose:
   BonehShoup:
     title: A Graduate Course in Applied Cryptography (v0.6)
@@ -76,8 +68,10 @@ informative:
 
 --- abstract
 
-This document updates RFC 7518 (JSON Web Algorithms (JWA)) to deprecate the JSON Web Signature (JWS) algorithm "none" and the JSON Web Encryption (JWE) algorithm
-"RSA1_5". These algorithms have known security weaknesses. It also updates the review
+This document updates RFC 7518 (JSON Web Algorithms (JWA)) to deprecate the JSON Web Signature (JWS) algorithm "none"
+and the JSON Web Encryption (JWE) algorithm "RSA1_5". These algorithms have known security weaknesses.
+It updates RFC 7519 (JSON Web Token (JWT)) so that
+these two algorithms are no longer mandatory to implement. It also updates the review
 instructions for Designated Experts to establish baseline security requirements that future
 algorithm registrations are expected to meet.
 
@@ -101,7 +95,8 @@ This document updates {{RFC7518}}: it changes the implementation
 requirements of two algorithms ({{deprecations}}) and adds to the review
 instructions for the JOSE Designated Experts ({{updated-de-instrs}}). It updates the review instructions ({{Section 7 of !RFC7518}}),
 to establish baseline security requirements for future JOSE algorithm registrations. Only algorithms
-that are reasonably assessed to satisfy these requirements are expected to be registered in the future.
+that are reasonably assessed to satisfy these requirements are expected to be registered in the future. It also
+updates the implementations requirements of {{RFC7519}} to no longer require either algorithm ({{jwt}}).
 
 # Conventions and Definitions
 
@@ -121,7 +116,8 @@ of October 2026 it lists 19 reports, many of which have high or critical impact 
 
 Although there are some historical uses for Unsecured JWS that are not security vulnerabilities,
 these are relatively few in number and can easily be satisfied by alternative means. For example, two
-of these are in OpenID Connect {{OpenID.Core}}: (1) securing unsigned ID Tokens via transmission over
+of these are in OpenID Connect {{OpenID.Core}}: (1) securing unsigned ID Tokens
+(as allowed in Section 2) via transmission over
 TLS in Section 3.1.3.7 and (2) the use of unsigned request objects in Section 6.1.  The small risk of
 breaking some of these uses is far outweighed by the improvement in security for the majority of
 JWS users who may be impacted by accidental acceptance of the "none" algorithm.
@@ -129,7 +125,7 @@ JWS users who may be impacted by accidental acceptance of the "none" algorithm.
 # The 'RSA1_5' algorithm {#RSA1_5}
 
 The "RSA1_5" algorithm implements RSA encryption using PKCS#1 version 1.5 padding ({{Section 7.2 of RFC8017}}). This
-padding mode has long been known to have security issues, since at least Bleichenbacher's attack in
+padding mode has long been known to have security issues, since at least Bleichenbacher's attack ({{RFC3218}}) in
 1998. It was supported in JWE due to the wide deployment of this algorithm, especially in legacy
 hardware. However, more secure replacements such as OAEP {{RFC8017}} or elliptic curve encryption
 algorithms are widely available since then. US National Institute of Standards and Technology (NIST) has disallowed the use of this encryption mode for federal
@@ -154,6 +150,14 @@ The IANA algorithm registry distinguishes between algorithms that are "Deprecate
 The algorithms identified in this document are to be marked as Deprecated only; the requirements in this
 section apply in addition to that definition. Existing specifications and applications that make use of
 these algorithms can continue to do so, but are encouraged to adopt alternatives in future updates.
+
+# Updated Implementation Requirements for JSON Web Token {#jwt}
+
+{{Section 8 of RFC7519}} (JWT) says that '"none" MUST be implemented by conforming JWT implementations', and
+that "RSA1_5" must be implemented by JWT implementations providing encryption capabilities. This document
+updates {{RFC7519}} to remove both requirements: "none" and "RSA1_5" are no longer mandatory to implement
+for conforming JWT implementations. JWT implementors should deprecate support for both algorithms
+as described in {{Section 3.2 of I-D.ietf-oauth-rfc8725bis}}.
 
 # Security Considerations
 
@@ -183,7 +187,8 @@ The following changes are to be made to the IANA "JSON Web Signature and Encrypt
 The review instructions for the Designated Experts (DEs) for the IANA "JSON Web Signature and Encryption Algorithms"
 registry {{IANA.jose}} in {{Section 7.1 of RFC7518}} are updated to add the following review criteria. As with
 the existing criteria in {{Section 7.1 of RFC7518}}, these criteria do not apply to algorithms being registered
-as Deprecated or Prohibited. These criteria are in addition to the one added to the same
+as Deprecated or Prohibited. These criteria do not apply to changes in the implementation requirements of existing
+algorithm registrations, only to new registrations. These criteria are in addition to the one added to the same
 instructions by {{Section 4.3.1 of RFC9864}}.
 
 The following bullet points are added to the instructions for DEs, after the third
@@ -200,7 +205,7 @@ paragraph of {{Section 7.1 of RFC7518}}:
    textbooks such as Section 9.2.2 and Chapter 12 of {{BonehShoup}}.
  - For JWE content encryption methods (the "enc" parameter values used with JWE), only algorithms that are
    reasonably believed to meet the standard security goal of authenticated encryption with associated data
-   (AEAD) are to be considered for approval. See {{RFC5116}}, and textbooks such as Section 9.1 of {{BonehShoup}}, for
+   (AEAD) are to be considered for approval. See {{RFC5116}}, and textbooks such as Section 9.5 of {{BonehShoup}}, for
    the definition of AEAD security.
 
 ## Additional Reference for JOSE Registry Group

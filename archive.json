@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-25T02:13:56.631120+00:00",
+  "timestamp": "2026-11-03T04:30:35.461539+00:00",
   "repo": "NeilMadden/jose-deprecate-none-rsa1_5",
   "labels": [
     {
@@ -378,6 +378,34 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 12,
+      "id": "PR_kwDOLfzqsM8AAAABMJD9vg",
+      "title": "Address IESG reviews",
+      "url": "https://github.com/NeilMadden/jose-deprecate-none-rsa1_5/pull/12",
+      "state": "MERGED",
+      "author": "NeilMadden",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses multiple reviews from IESG. See individual commits for how each review was addressed. The main change is in response to Mahesh\u2019s DISCUSS: I have added a section updating RFC 7519 to no longer mark \u201cnone\u201d and \u201cRSA1_5\u201d as MTI.",
+      "createdAt": "2026-11-01T17:27:03Z",
+      "updatedAt": "2026-11-01T17:27:49Z",
+      "baseRepository": "NeilMadden/jose-deprecate-none-rsa1_5",
+      "baseRefName": "main",
+      "baseRefOid": "f40c0c90e0639d13fd4ea072a5c6cdbfb6592f64",
+      "headRepository": "NeilMadden/jose-deprecate-none-rsa1_5",
+      "headRefName": "iesg_reviews",
+      "headRefOid": "f9a6d4a92f7b26e8cdb0fb10000510c045faa480",
+      "closedAt": "2026-11-01T17:27:49Z",
+      "mergedAt": "2026-11-01T17:27:49Z",
+      "mergedBy": "NeilMadden",
+      "mergeCommit": {
+        "oid": "5d62892ed7fb6eb015bcee962e8bb9915d80d650"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
